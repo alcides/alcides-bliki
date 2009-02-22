@@ -1,4 +1,5 @@
 *.pyc
 tmp
 db
+fixtures
 .DS_Store
