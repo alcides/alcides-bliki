@@ -87,7 +87,7 @@
 			<foaf:OnlineAccount>
 				<foaf:accountServiceHomepage rdf:resource="http://pownce.com/alcides/"/>
 				<foaf:accountName>alcides</foaf:accountName>
-				<rdfs:seeAlso rdf:resource="http://pownce.com/feeds/public/alcides/"/>
+				<rdfs:seeAlso rdf:resource="http://pownce.com/feeds/media/alcides/"/>
 				<dc:description xml:lang="en">My Pownce account</dc:description>
 				<dc:description xml:lang="pt">A minha conta do Pownce</dc:description>
 			</foaf:OnlineAccount>

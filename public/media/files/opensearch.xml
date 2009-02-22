@@ -2,6 +2,6 @@
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
 <ShortName>Alcides Fonseca</ShortName>
 <Description>Alcides Fonseca</Description>
-<Image width="16" height="16" type="image/png">http://wiki.alcidesfonseca.com/public/images/search.png</Image>
+<Image width="16" height="16" type="image/png">http://wiki.alcidesfonseca.com/media/images/search.png</Image>
 <Url type="text/html" method="get" template="http://www.google.com/custom?domains=wiki.alcidesfonseca.com&amp;sitesearch=wiki.alcidesfonseca.com&amp;client=pub-1411256716541452&amp;q={searchTerms}"/>
 </OpenSearchDescription>
