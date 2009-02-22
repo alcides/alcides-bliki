@@ -161,12 +161,12 @@ h3 {
 
 .article .text a {
 	font-weight: bold;
-	background:transparent url(/media/images/out.jpg) no-repeat scroll right top;
+	background:transparent url(/public/images/out.jpg) no-repeat scroll right top;
 	margin-right:0pt;
 	padding-right:12px;
 }
 
-.article .text a[href^="http://alcidesfonseca.com/"], .article .text a[href^="/"], .article .text a[href^="#"] {
+.article .text a[href^="http://wiki.alcidesfonseca.com/"], .article .text a[href^="/"], .article .text a[href^="#"] {
 	background:transparent none repeat scroll 0% 0%;
 	padding-right:0pt;
 }
