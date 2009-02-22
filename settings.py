@@ -24,9 +24,9 @@ LANGUAGE_CODE = 'en-us' # http://www.i18nguy.com/unicode/language-identifiers.ht
 SITE_ID = 1
 USE_I18N = True
 
-MEDIA_ROOT = relative('public/')
-MEDIA_URL = '/public/'
-ADMIN_MEDIA_PREFIX = '/public/admin-media/'
+MEDIA_ROOT = relative('public/media/')
+MEDIA_URL = '/media/'
+ADMIN_MEDIA_PREFIX = '/admin-media/'
 
 ROOT_URLCONF = 'urls'
 
