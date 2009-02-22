@@ -1,0 +1,11 @@
+h1. Bliki
+
+by "Alcides Fonseca":http://alcidesfonseca.com/
+
+This is the code that powers http://wiki.alcidesfonseca.com
+
+It is a django app being served by apache with passenger running in slicehost. you might want to change the settings and the public/media folder, so it follows django's standards.
+
+There are a few dependencies, so you should run @pip install -r requirements.txt@ before starting up.
+
+Feedback appreciated to me@alcidesfonseca.com
