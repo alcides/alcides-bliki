@@ -26,7 +26,7 @@ USE_I18N = True
 
 MEDIA_ROOT = relative('public/')
 MEDIA_URL = '/public/'
-ADMIN_MEDIA_PREFIX = '/media_admin/'
+ADMIN_MEDIA_PREFIX = '/public/admin/'
 
 ROOT_URLCONF = 'urls'
 
