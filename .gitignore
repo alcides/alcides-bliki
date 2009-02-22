@@ -1,5 +1,7 @@
 *.pyc
 tmp
+src
+build
 db
 fixtures
 .DS_Store
