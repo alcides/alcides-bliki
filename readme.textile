@@ -9,3 +9,8 @@ It is a django app being served by apache with passenger running in slicehost. y
 There are a few dependencies, so you should run @pip install -r requirements.txt@ before starting up.
 
 Feedback appreciated to me@alcidesfonseca.com
+
+
+h2. License
+
+This is released under the "AWL":http://wiki.alcidesfonseca.com/AWL.
