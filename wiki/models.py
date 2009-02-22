@@ -29,6 +29,6 @@ class Page(models.Model):
 		return "/" + self.slug
 		
 	def is_published(self):
-		return self.pubdate == None
+		return self.pubdate != None
 	is_published.short_description = 'Published?'
 	is_published.boolean = True
