@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response, get_object_or_404
-from alcides.wiki.models import Page
+from wiki.models import Page
 
 def index(request):
 	latest_pages = Page.objects.all().order_by('-pubdate')[:20]
