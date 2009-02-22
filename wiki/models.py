@@ -27,3 +27,8 @@ class Page(models.Model):
 	
 	def get_absolute_url(self):
 		return "/" + self.slug
+		
+	def is_published(self):
+		return self.pubdate == None
+	is_published.short_description = 'Published?'
+	is_published.boolean = True
