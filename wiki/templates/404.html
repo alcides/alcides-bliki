@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block pagetitle %}Page not found{% endblock %}
+
+{% block content %}
+	<div class="error_message">
+		<p>Sorry but the page you were looking for doesn't exist. This is due to one of two reasons:</p>
+		<ul>
+			<li>This page is supposed to be here, but I haven't had the time to write it.</li>
+			<li>You followed a bad link.</li>
+		</ul>
+		<p>Either way, you can return to the <a href="/">homepage</a>.</p>
+	</div>
+	
+{% endblock %}

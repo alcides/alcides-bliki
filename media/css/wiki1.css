@@ -1,0 +1,226 @@
+.clear {
+	clear: both;
+}
+
+
+body {
+	padding: 0;
+	margin: 0;
+	text-align: center;   
+	font-family:"Lucida Grande", "Calibri", Helvetica,Arial,Verdana,sans-serif;
+	font-size: 0.9em;
+}
+
+pre {
+	font-family:'Andale Mono','Lucida Console','Courier New',monospaced;
+	font-size:10px;
+	max-height:360px;
+	overflow:auto;
+	width:630px;
+}
+
+code {
+	font-family:'Courier New',Courier,Fixed;
+	font-size:11px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:normal;
+}
+
+blockquote {
+	font-family: Georgia, serif;
+	font-style: italic;
+}
+
+a {
+	text-decoration: none;
+	color: #2A4753;
+}
+a img {
+	border: none;
+}
+.section a:hover, .aside a:hover {
+	color: #000; 
+	background-color: #F4F2E4;
+}
+
+
+
+h3 {
+	width: 100%;
+	letter-spacing: 1px;
+	border-bottom: dashed 1px #9A8E51;
+}
+
+.wrap_header div {
+	text-align: left;
+}
+
+.wrap {
+	text-align: left;
+	background-color: white;
+	margin:auto;
+	width: 900px;
+}
+
+.header {
+	margin: auto;
+	width:900px;
+}
+
+.header h1 {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+}
+
+.header h1 a, .header h1 a:hover {
+	color: black;
+	text-decoration: none;
+}
+
+
+
+.header h2 {
+	font-size: 1.1em;
+	font-weight: normal;
+	display: inline;
+	margin: 0;
+	margin-left: 1em;
+	padding: 0;
+	text-transform: lowercase;
+}
+
+.nav {
+	width:100%;
+	background-color: #333333;
+	color:#DDDDDD;
+	margin: 0px;
+	border-bottom: solid #CCCCCC 1px;
+	margin-bottom: 20px;
+}
+
+.nav ul {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+.nav ul li {
+	display: inline;
+	padding: 0;
+	list-style: none;
+}
+
+.nav ul li a {
+	color: white;
+	font-size: 10px;
+	line-height:1.6em;
+	font-weight: normal;
+	border: 0px;
+	padding: 5px;
+}
+
+.nav ul li a:hover {
+	background-color: #111111;
+}
+
+.section {
+	float: left;
+	border: 0;
+	width:650px;
+	padding:0pt 25px 0pt 20px;
+}
+
+
+.page {
+	margin-bottom: 30px;	
+}
+
+.article {
+	margin-bottom:20px;
+}
+
+.article h3 {
+	font-size: 15px;
+}
+
+.article .date {
+	text-align: right;
+	font-size: 10px;
+}
+
+.article .text {
+	text-align: justify;
+	color:#333333;
+	font-family:Helvetica,'Lucida Grande',Verdana,Arial,Sans-Serif;
+	font-size:13px;
+}
+
+.article .text a {
+	font-weight: bold;
+	background:transparent url(/media/images/out.jpg) no-repeat scroll right top;
+	margin-right:0pt;
+	padding-right:12px;
+}
+
+.article .text a[href^="http://alcidesfonseca.com/"], .article .text a[href^="/"], .article .text a[href^="#"] {
+	background:transparent none repeat scroll 0% 0%;
+	padding-right:0pt;
+}
+
+.article .text a:hover {
+	text-decoration: underline;
+}
+
+.article .text .footnote {
+	font-size: 8pt;
+}
+
+.published, .author {
+	display: none;
+}
+.subpages li {
+	font-size: 11px;
+}
+
+#hCard {
+	display: inline;
+}
+
+.error_message {
+	font-size: 11px;	
+}
+
+.aside {
+	margin: 0;
+	float: left;
+	padding-left: 1em;
+	font-size: 8pt;
+	width:165px;
+	border: 0;
+}
+
+#sidebar {
+	width:180px;
+}
+
+.aside .list {
+	list-style: none;
+	margin:0;
+	padding:0;
+}
+
+#sidebar .list li {
+	padding-bottom: 2px;
+	list-style: square;
+}
+
+.footer {
+	border-top: dashed 1px #9A8E51;
+	font-size: 0.8em;
+	margin: 1em;
+	margin-top: 2em;
+}

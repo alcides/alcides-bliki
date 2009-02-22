@@ -1,0 +1,35 @@
+{% load markup %}
+{% load humanize %}
+{% load pygmentation %}
+{% load subpages %}
+{% get_subpages page.slug %}
+
+<!--HTML5:article-->
+<div class="article hentry">
+	<h3 class="entry-title"><a href="/{{page.slug}}">{{page.title}}</a></h3>
+	<div class="date updated">last update: <abbr title="{{page.date|date:"Y-m-d\TH:i:s+00:00"}}">{{page.date|naturalday:"d M Y"}}</abbr></div>
+	<div class="date published"><abbr title="{{page.pubdate|date:"Y-m-d\TH:i:s+00:00"}}">{{page.pubdate|naturalday:"d M Y"}}</abbr></div>
+	<div class="author"><span class="vcard fn">{{page.author.username}}</span></div>
+	<div class="text entry-content" lang="{{page.lang.code}}">
+		{% autoescape off %}
+		    {{page.text|pygmentize|textile}}
+		{% endautoescape %}
+		
+	</div>
+	
+	<div class="subpages">
+		
+		
+		{% if subpages %}
+			<h5>Subpages:</h5>
+			<ul>
+				{% for p in subpages %}
+					<li>({{p.date|naturalday:"d M Y"}}) <a href="/{{p.slug}}">{{p.title}}</a></li>
+				{% endfor %}
+			</ul>
+	
+		{% endif %}
+	</div>
+	
+</div>
+<!--/HTML5:article-->

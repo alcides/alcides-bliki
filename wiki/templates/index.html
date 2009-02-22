@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block pagetitle %}Latest Pages{% endblock %}
+{% block title %}Latest Pages{% endblock %}
+
+{% block content %}
+	<div class="pages_list">
+		{% for page in latest_pages %}
+			<div class="page">
+				{% include "page.html" %}
+				<div class="comments count">
+					<a href="/{{page.slug}}#disqus_thread">Comments (View)</a>
+				</div>
+			</div>
+	    {% endfor %}
+	</div>
+	<script type="text/javascript">
+	//<[CDATA[
+	(function() {
+			var links = document.getElementsByTagName('a');
+			var query = '?';
+			for(var i = 0; i < links.length; i++) {
+				if(links[i].href.indexOf('#disqus_thread') >= 0) {
+					query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+				}
+			}
+			document.write('<script type="text/javascript" src="http://disqus.com/forums/alcides/get_num_replies.js' + query + '"></' + 'script>');
+		})();
+	//]]>
+	</script>
+	
+{% endblock %}
