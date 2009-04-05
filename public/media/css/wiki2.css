@@ -1,0 +1,185 @@
+/* Reset */
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+
+/* Typography */
+
+body {
+	font-family: Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 16px;
+}
+
+p {
+	margin-bottom: 16px;
+}
+
+blockquote {
+	text-indent: -0.8em;
+	font-size: 12px;
+}
+
+b {
+	font-variant: small-caps;
+}
+
+h1 {
+	font-size: 48px;
+	line-height: 50px;
+	font-weight: normal;
+}
+
+h2 {
+	font-size: 36px;
+	line-height: 40px;
+	text-transform: uppercase;
+}
+
+h3 {
+	font-size: 24px;
+	line-height: 30px;
+}
+
+h4 {
+	font-size: 21px;
+	line-height: 25px;
+}
+
+h5 {
+	font-size: 18px;
+	line-height: 20px;	
+}
+
+h6 {
+	font-size: 16px;
+	line-height: 18px;
+}
+
+/* Color */
+
+a {
+	color: #45594E;
+	text-decoration: none;
+}
+
+a:hover {
+	background-color: #F4F3DE;
+	color: #3B4137;
+}
+
+/* Layout */
+
+.header {
+	width: 100%;
+	background-color: #12140F;
+	margin-bottom: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.header a {
+	margin-left: 22%;	
+	color: white;
+	text-decoration: none;
+	background-color: #12140F;
+}
+
+#sidebar {
+	float: left;
+	width: 17%;
+	margin: 0;
+	margin-right: 2%;
+	background-color: #8FA193;
+	padding: 10px;
+}
+
+#sidebar h3 {
+	font-style: italic;
+}
+
+#search_title {
+	margin-top: 20px;
+}
+
+.section {
+	float: left;
+	width: 75%;
+	margin-left: 3%;
+}
+
+.footer {
+	padding-top: 20px;
+	clear: both;
+	text-align: center;
+}
+
+.footer p {
+	background-color: #8FA193;
+	color: #12140F;
+}
+
+.entry-title {
+	margin-top: 20px;
+	margin-left: 25%;
+}
+
+.entry-title a {
+	text-decoration: none;
+	font-weight: normal;
+	background-color: #8FA193;
+	color: white;
+	padding: 3px;
+}
+
+.updated {
+	margin-top: 10px;
+}
+
+.details {
+	float: left;
+	margin-right: 5%;
+	width: 20%;
+	margin-top: 5px;
+	text-align: right;
+}
+
+.date, .author {
+	margin-top: 10px;
+}
+
+.date abbr, .author span {
+	background-color: #45594E;
+	color: white;
+	padding: 3px;
+	font-weight: normal;
+}
+
+.date span, .author {
+	font-weight: bold;
+}
+
+.text {
+	margin-top: 10px;
+	float: left;
+	width: 72%;
+	text-align: justify;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.subpages, .comments {
+	clear: both;
+	margin-left: 25%;
+}
+
+.subpages li a:hover {
+	color: red;
+}
+
+.subpages li {
+	list-style: none;
+}

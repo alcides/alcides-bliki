@@ -7,9 +7,11 @@
 <!--HTML5:article-->
 <div class="article hentry">
 	<h3 class="entry-title"><a href="/{{page.slug}}">{{page.title}}</a></h3>
-	<div class="date updated">last update: <abbr title="{{page.date|date:"Y-m-d\TH:i:s+00:00"}}">{{page.date|naturalday:"d M Y"}}</abbr></div>
-	<div class="date published"><abbr title="{{page.pubdate|date:"Y-m-d\TH:i:s+00:00"}}">{{page.pubdate|naturalday:"d M Y"}}</abbr></div>
-	<div class="author"><span class="vcard fn">{{page.author.username}}</span></div>
+	<div class="details">
+		<div class="date updated"><span class="label">last update:</span> <abbr title="{{page.date|date:"Y-m-d\TH:i:s+00:00"}}">{{page.date|naturalday:"d M Y"}}</abbr></div>
+		<div class="date published"><span class="label">published:</span> <abbr title="{{page.pubdate|date:"Y-m-d\TH:i:s+00:00"}}">{{page.pubdate|naturalday:"d M Y"}}</abbr></div>
+		<div class="author">written by <span class="vcard fn">{{page.author.username}}</span></div>
+	</div>
 	<div class="text entry-content" lang="{{page.lang.code}}">
 		{% autoescape off %}
 		    {{page.text|pygmentize|textile}}
