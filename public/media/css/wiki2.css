@@ -19,8 +19,11 @@ p {
 }
 
 blockquote {
-	text-indent: -0.8em;
-	font-size: 12px;
+	border-left: solid #8FA193 5px;
+	padding-left: 5px;
+	font-size: 15px;
+	font-style: italic;
+	font-family: Georgia;
 }
 
 b {
