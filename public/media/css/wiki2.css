@@ -165,6 +165,10 @@ a:hover {
 	font-weight: bold;
 }
 
+.published {
+	display: none;
+}
+
 .text {
 	margin-top: 10px;
 	float: left;
