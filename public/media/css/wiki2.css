@@ -74,6 +74,10 @@ a:hover {
 	color: #3B4137;
 }
 
+.footnote {
+	font-size: 8pt;
+}
+
 /* Layout */
 
 .header {
