@@ -25,7 +25,7 @@ def pygmentize(value):
             last_end = match_obj.end(1)
             found = found + 1
         to_return = to_return + value[last_end:]
-        to_return += u"<style>%s</style>" % formatters.HtmlFormatter().get_style_defs('.highlight')
+        # to_return += u"<style>%s</style>" % formatters.HtmlFormatter().get_style_defs('.highlight')
         return to_return
     except:
         return value
