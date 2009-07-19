@@ -80,6 +80,11 @@ a:hover {
 
 /* Layout */
 
+ul {
+	list-style-position: inside;
+}
+
+
 .header {
 	width: 100%;
 	background-color: #12140F;
@@ -119,19 +124,21 @@ a:hover {
 }
 
 .footer {
-	padding-top: 20px;
+	padding: 5px;
+	padding-top: 10px;
+	width: 50%;
+	margin: auto;
+	margin-top: 20px;
 	clear: both;
 	text-align: center;
-}
-
-.footer p {
 	background-color: #8FA193;
 	color: #12140F;
 }
 
+
 .entry-title {
 	margin-top: 30px;
-	margin-left: 25%;
+	margin-left: 15%;
 }
 
 .entry-title a {
@@ -146,37 +153,40 @@ a:hover {
 	margin-top: 10px;
 }
 
+.date {
+	text-align: center;
+}
+
+.date .year, .date .month, .date .day {
+	display: block;
+	color: #45594E;
+	font-weight: bold;
+	margin-bottom:10px;
+}
+
+.date .year {
+	font-size: 12pt;
+}
+.date .month {
+	font-size: 14pt;
+}
+.date .day {
+	font-size: 26pt;
+}
+
+
 .details {
 	float: left;
 	margin-right: 5%;
-	width: 20%;
+	width: 10%;
 	margin-top: 5px;
 	text-align: right;
-}
-
-.date, .author {
-	margin-top: 10px;
-}
-
-.date abbr, .author span {
-	background-color: #45594E;
-	color: white;
-	padding: 3px;
-	font-weight: normal;
-}
-
-.date span, .author {
-	font-weight: bold;
-}
-
-.published {
-	display: none;
 }
 
 .text {
 	margin-top: 10px;
 	float: left;
-	width: 72%;
+	width: 82%;
 	text-align: justify;
 	font-size: 14px;
 	line-height: 16px;
@@ -184,7 +194,8 @@ a:hover {
 
 .subpages, .comments {
 	clear: both;
-	margin-left: 25%;
+	margin-left: 15%;
+	margin-bottom: 20px;
 }
 
 .subpages li a:hover {
@@ -193,4 +204,5 @@ a:hover {
 
 .subpages li {
 	list-style: none;
-}
+	margin-top: 3px;
+	margin-bottom: 3px;
