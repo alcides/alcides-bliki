@@ -87,6 +87,10 @@ ul {
 	list-style-position: inside;
 }
 
+.wrap {
+	max-width: 800px;
+	margin: auto;
+}
 
 .header {
 	width: 100%;
