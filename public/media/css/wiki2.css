@@ -192,6 +192,10 @@ ul {
 	line-height: 16px;
 }
 
+.subpages {
+	margin-top: 20px;
+}
+
 .subpages, .comments {
 	clear: both;
 	margin-left: 15%;
