@@ -5,15 +5,29 @@
 
 {% block content %}
 	<div class="pages_list">
-		{% for page in latest_pages %}
+		{% for object in object_list %}
 			<div class="page">
-				{% include "page.html" %}
+				{% include "wiki/page.html" %}
 				<div class="comments count">
-					<a href="/{{page.slug}}#disqus_thread">Comments (View)</a>
+					<a href="/{{object.slug}}#disqus_thread">Comments (View)</a>
 				</div>
 			</div>
 	    {% endfor %}
 	</div>
+	
+	<div class="pagination">
+	    <span class="step-links">
+	        {% if page_obj.has_previous %}
+	            <a href="?page={{ page_obj.previous_page_number }}" class="previous">previous</a>
+	        {% endif %}
+
+	        {% if page_obj.has_next %}
+	            <a href="?page={{ page_obj.next_page_number }}" class="next">next</a>
+	        {% endif %}
+	    </span><br />
+	</div>
+	
+	
 	<script type="text/javascript">
 	//<[CDATA[
 	(function() {

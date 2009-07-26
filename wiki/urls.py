@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from views import *
+from models import Page
 from feeds import English, Portuguese, All
 
 feeds = {
@@ -10,6 +10,6 @@ feeds = {
 
 urlpatterns = patterns('',
 	(r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
-	(r'^(?P<slug>\S+)$', page_detail),
-    (r'^$', index),
+	(r'^(?P<slug>\S+)$', 'django.views.generic.list_detail.object_detail',{ 'queryset': Page.objects.all() }),
+    (r'^$', 'django.views.generic.list_detail.object_list', {'queryset': Page.objects.all(), 'paginate_by': 20 }),
 )

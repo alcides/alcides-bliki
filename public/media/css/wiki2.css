@@ -210,3 +210,27 @@ ul {
 	list-style: none;
 	margin-top: 3px;
 	margin-bottom: 3px;
+}
+
+.pagination {
+	width: 100%;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-top: solid #45594E 1px;
+	padding-top: 10px;
+}
+
+.pagination .previous {
+	float: left;
+}
+
+.pagination .next {
+	float: right;
+}
+
+.pagination a {
+	display: block inline;
+	padding: 3px;
+	border: solid #45594E 1px;	
+}
