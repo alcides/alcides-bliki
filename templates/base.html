@@ -9,7 +9,7 @@
 		<link rel="icon" href="/favicon.ico" />
 		<link rel="pavatar" href="http://alcidesfonseca.com/media/images/alcides_small.png" />
 		<meta name="viewport" content="width = 320" />
-		<link rel="stylesheet" href="/media/css/wiki2.css" />
+		<link rel="stylesheet" href="/media/css/alcides-bliki.css" />
 		<link rel="stylesheet" href="/media/css/syntax.css" />
 		<script src="/media/js/prototype.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/media/js/scriptaculous.js" type="text/javascript" charset="utf-8"></script>
@@ -33,7 +33,26 @@
 
 			<!--HTML5:header-->
 			<div class="header">
-				<h1><a href="/">Alcides Fonseca</a></h1>
+				<div class="agent vcard author" id="hCard">
+					<img class="photo" src="/media/images/alcides_small.png" alt="" />
+					<h1><a class="url fn uid" rel="me" href="/">Alcides Fonseca</a></h1>
+					
+					<ul class="links">
+						<li><a href="/about">More about me</a></li>
+						<li><a class="email" href="mailto:me@alcidesfonseca.com">Email</a></li>
+						<li><a class="email" href="xmpp:alcidesfonseca@gmail.com">XMPP</a></li>
+					</ul>
+			
+					<div style="display:none">
+						<abbr class="bday" title="1988-11-24T01:55:00Z">Nov 24, 1988</abbr>
+						<span class="geo">
+							<span class="latitude">40.197958</span>, 
+							<span class="longitude">-8.408312</span>
+						</span>
+					</div>
+					
+					<div class="clear"></div>
+				</div>
 			</div>
 			<!--/HTML5:header-->
 		</div>
@@ -43,16 +62,6 @@
 				{% block content %}{% endblock %}
 			</div>		
 			<!--/HTML5:section-->
-			
-			<!--HTML5:aside-->
-			<div class="aside" id="sidebar">
-				{% block sidebar %}
-						{% include "sidebar.html" %}
-				{% endblock %}
-			</div>
-			<!--/HTML5:aside-->
-			
-			<div class="clear"></div>
 			
 			<!--HTML5:footer-->
 			<div class="footer">
