@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Alcides Fonseca: {% block title %}Homepage{% endblock %}</title>
+		
+		<!-- Style -->	
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="icon" href="/favicon.ico" />
+		<link rel="pavatar" href="http://alcidesfonseca.com/media/images/alcides_small.png" />
+		<meta name="viewport" content="width = 320" />
+		<link rel="stylesheet" href="/media/css/wiki2.css" />
+		<link rel="stylesheet" href="/media/css/syntax.css" />
+		<script src="/media/js/prototype.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/media/js/scriptaculous.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/media/js/wiki.js" type="text/javascript" charset="utf-8"></script>	
+				
+		<!-- Feeds -->
+		<link rel="alternate" type="application/rss+xml" title="Alcides Fonseca (pt+en)" href="http://feeds.feedburner.com/alcides" />
+		<link rel="alternate" type="application/rss+xml" title="Alcides Fonseca (en)" href="http://feeds.feedburner.com/alcides/en" />
+		
+		<!-- OpenID -->
+		<link rel="openid.server" href="http://www.myopenid.com/server" />
+		<link rel="openid.delegate" href="http://alcides.myopenid.com/" />
+	
+		<!-- Semantic -->
+		<link rel="meta" type="application/rdf+xml" title="FOAF" href="/media/files/foaf.rdf" />
+		<link rel="search" type="application/opensearchdescription+xml" href="/media/files/opensearch.xml" title="Search Alcides Fonseca" />
+
+	</head>
+	<body>
+		<div class="wrap_header">
+
+			<!--HTML5:header-->
+			<div class="header">
+				<h1><a href="/">Alcides Fonseca</a></h1>
+			</div>
+			<!--/HTML5:header-->
+		</div>
+		<div class="wrap">
+			<!--HTML5:section-->
+			<div class="section">
+				{% block content %}{% endblock %}
+			</div>		
+			<!--/HTML5:section-->
+			
+			<!--HTML5:aside-->
+			<div class="aside" id="sidebar">
+				{% block sidebar %}
+						{% include "sidebar.html" %}
+				{% endblock %}
+			</div>
+			<!--/HTML5:aside-->
+			
+			<div class="clear"></div>
+			
+			<!--HTML5:footer-->
+			<div class="footer">
+				{% block footer %}
+					<p class="copyright">&copy; {% now "Y" %} Alcides Aguiar Fonseca.</p>
+					<p> This wiki is powered by <a href="/django">Django</a> and is deployed at <a href="/slicehost">Slicehost</a> using <a href="http://www.modrails.com/">Passenger Fusion (mod_rails)</a>.</p>
+				{% endblock %}
+			</div>
+			<!--/HTML5:footer-->
+		</div>
+		
+		<!-- Stats -->
+		<script type='text/javascript' src='http://track2.mybloglog.com/js/jsserv.php?mblID=2007061616201456'></script>
+		<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			_uacct = "UA-2046573-1";
+			urchinTracker();
+		</script>
+		
+	</body>
+</html>
