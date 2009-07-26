@@ -192,8 +192,9 @@ ul {
 	line-height: 16px;
 }
 
-.subpages {
-	margin-top: 20px;
+.subpages h5 {
+	padding-top: 15px;
+	padding-bottom: 5px;
 }
 
 .subpages, .comments {
