@@ -27,7 +27,7 @@ class Page(models.Model):
 		return u'%s' % (self.title)
 	
 	def get_absolute_url(self):
-		return "/" + self.slug
+		return "/%s/" % self.slug
 		
 	def is_published(self):
 		return self.pubdate != None
