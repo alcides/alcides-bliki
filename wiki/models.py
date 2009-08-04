@@ -35,10 +35,11 @@ class Page(models.Model):
 	is_published.boolean = True
 
 if not settings.DEBUG or 1:
-	from django.db.models.signals import pre_save
+	from django.db.models.signals import pre_save, pre_delete
 	from staticgenerator import quick_delete
 
 	def delete_cache(sender, instance, **kwargs):
 		   quick_delete(instance, '/')
 		
 	pre_save.connect(delete_cache,sender=Page)
+	pre_delete.connect(delete_cache,sender=Page)
