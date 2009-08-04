@@ -34,12 +34,11 @@ class Page(models.Model):
 	is_published.short_description = 'Published?'
 	is_published.boolean = True
 
-if not settings.DEBUG:
-	from django.dispatch import dispatcher
-	from django.db.models import signals
+if not settings.DEBUG or 1:
+	from django.db.models.signals import pre_save
 	from staticgenerator import quick_delete
 
-	def delete(sender, instance):
+	def delete_cache(sender, instance, **kwargs):
 		   quick_delete(instance, '/')
-	
-	dispatcher.connect(delete, sender=Page, signal=signals.post_save)
+		
+	pre_save.connect(delete_cache,sender=Page)
