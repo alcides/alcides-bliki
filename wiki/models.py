@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 class Language(models.Model):
 	name =  models.CharField(blank=True, max_length=100)
@@ -32,3 +33,13 @@ class Page(models.Model):
 		return self.pubdate != None
 	is_published.short_description = 'Published?'
 	is_published.boolean = True
+
+if not settings.DEBUG:
+	from django.dispatch import dispatcher
+	from django.db.models import signals
+	from staticgenerator import quick_delete
+
+	def delete(sender, instance):
+		   quick_delete(instance, '/')
+	
+	dispatcher.connect(delete, sender=Page, signal=signals.post_save)

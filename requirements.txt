@@ -1,3 +1,4 @@
 django>=1.0
 Pygments
 -e git+git://github.com/jsamsa/python-textile.git#egg=textile
+-e git+git://github.com/JaredKuolt/staticgenerator.git#egg=staticgenerator
