@@ -16,7 +16,7 @@ WEB_ROOT = relative('public/')
 
 STATIC_GENERATOR_URLS = (
     r'^/$',
-    r'^/(?P<slug>\S+)$',
+    r'^/(?!admin$)(?P<slug>\S+)$',
 )
 
 MIDDLEWARE_CLASSES = tuple(list(MIDDLEWARE_CLASSES) + [
