@@ -34,7 +34,7 @@ class Page(models.Model):
 	is_published.short_description = 'Published?'
 	is_published.boolean = True
 
-if not settings.DEBUG or 1:
+if not settings.DEBUG:
 	from django.db.models.signals import pre_save, pre_delete
 	from staticgenerator import quick_delete
 
