@@ -9,16 +9,3 @@ DATABASE_USER = ''
 DATABASE_PASSWORD = ''
 DATABASE_HOST = ''             # empty -> localhost
 DATABASE_PORT = ''             # empty -> default
-
-# staticgenerator
-
-WEB_ROOT = relative('public/')
-
-STATIC_GENERATOR_URLS = (
-    r'^/$',
-    r'^/(?!(admin|feeds))(?P<slug>\S+)$',
-)
-
-MIDDLEWARE_CLASSES = tuple(list(MIDDLEWARE_CLASSES) + [
-	'staticgenerator.middleware.StaticGeneratorMiddleware'
-])
