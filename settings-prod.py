@@ -9,3 +9,7 @@ DATABASE_USER = ''
 DATABASE_PASSWORD = ''
 DATABASE_HOST = ''             # empty -> localhost
 DATABASE_PORT = ''             # empty -> default
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': lambda x: DEBUG,
+}
