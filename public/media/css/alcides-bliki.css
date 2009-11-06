@@ -65,6 +65,15 @@ h6 {
 	line-height: 18px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 5px;
+}
+
+ul {
+	margin: 5px;
+	margin-bottom: 10px;
+}
+
 /* Color */
 
 a {
@@ -231,7 +240,7 @@ ul {
 	margin-bottom: 20px;
 }
 
-.subpages li a:hover {
+.subpages li a:hover {
 	color: red;
 }
 
