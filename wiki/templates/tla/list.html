@@ -6,8 +6,6 @@
     {% for link in links %}
     <li>{{ link.before_text }} <a href="{{ link.url }}">{{ link.text }}</a> {{ link.after_text }}</li>
     {% endfor %}
-{% else %}
-    <li>Advertise here!</li>
 {% endif %}
 </ul>
 {% endcache %}
