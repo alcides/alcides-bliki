@@ -1,6 +1,6 @@
 from datetime import timedelta
 from elementtree.ElementTree import ElementTree
-from urllib import urlopen
+from urllib2 import urlopen
 
 from django import template
 from django.conf import settings
@@ -8,28 +8,22 @@ from django.conf import settings
 
 register = template.Library()
 
+class Link(object):
+	def __init__(self,node):
+		self.url = node[1].text
+		self.text = node[2].text
+		self.before_text = node[3].text
+		self.after_text = node[4].text
 
 def tla_list(request):
     """
     """
     url = 'http://www.text-link-ads.com/xml.php?inventory_key=' + settings.TLA_INVENTORY_KEY + '&referer=' + request.META.get('REQUEST_URI', request.META.get('PATH_INFO', '/'))
     agent = '&user_agent=' + request.META['HTTP_USER_AGENT']
-    links = ElementTree.parse(urlopen(url+agent)).getroot()
-    
+    e = ElementTree()
+    links = ElementTree.parse(e,urlopen(url+agent))
     return {
-        'links': links
+        'links': [ Link(link) for link in links ]
     }
-    
-    # This is here so I don't forget it. :P
-    # Don't know which way really works yet.
-    #
-    # return {
-    #     'links': {
-    #         'after_text': links.find('after_text').text,
-    #         'before_text': links.find('before_text').text,
-    #         'text': links.find('text').text,
-    #         'url': links.find('url').text,
-    #     }
-    # }
 
-register.inclusion_tag('templates/tla/list.html')(tla_list)
+register.inclusion_tag('tla/list.html')(tla_list)
