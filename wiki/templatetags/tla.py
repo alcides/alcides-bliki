@@ -21,6 +21,8 @@ def tla_list(request):
     url = 'http://www.text-link-ads.com/xml.php?inventory_key=' + settings.TLA_INVENTORY_KEY + '&referer=' + request.META.get('REQUEST_URI', request.META.get('PATH_INFO', '/'))
     if 'HTTP_USER_AGENT' in request.META:
         agent = '&user_agent=' + request.META['HTTP_USER_AGENT']
+    else:
+        agent = ""
     e = ElementTree()
     links = ElementTree.parse(e,urlopen(url+agent))
     return {
