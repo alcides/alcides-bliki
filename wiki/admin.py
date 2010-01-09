@@ -19,8 +19,16 @@ class PageAdmin(admin.ModelAdmin):
 	
 	save_on_top = True
 	
+	
+def restore_version(modeladmin, req, qs):
+  for o in qs:
+    p = o.page
+    p.text = o.text
+    p.save()
+	
 class PageVersionAdmin(admin.ModelAdmin):
   list_display = ('page','version')
+  actions = [restore_version]
 
 admin.site.register(Language)
 admin.site.register(Page, PageAdmin)
