@@ -1,5 +1,9 @@
+from datetime import datetime
 from django.contrib import admin
 from wiki.models import Language, Page, PageVersion
+	
+def publish(modeladmin, req, qs):
+  qs.update(pubdate=datetime.now())
 	
 class PageAdmin(admin.ModelAdmin):
 	prepopulated_fields = {"slug": ("title",)}
@@ -18,6 +22,7 @@ class PageAdmin(admin.ModelAdmin):
 	    )
 	
 	save_on_top = True
+	actions = [publish]
 	
 	
 def restore_version(modeladmin, req, qs):

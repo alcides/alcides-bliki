@@ -18,7 +18,6 @@ class Page(models.Model):
 	author = models.ForeignKey(User)
 	text = models.TextField()
 	
-
 	class Meta:
 		ordering = ['-date']
 		get_latest_by = "date"
@@ -31,6 +30,7 @@ class Page(models.Model):
 		
 	def is_published(self):
 		return self.pubdate != None
+
 	is_published.short_description = 'Published?'
 	is_published.boolean = True
 
