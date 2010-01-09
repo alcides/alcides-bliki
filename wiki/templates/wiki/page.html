@@ -4,18 +4,15 @@
 {% load subpages %}
 {% get_subpages object.slug %}
 
-<!--HTML5:article-->
-<div class="article hentry">
+<article class="hentry">
 	<h3 class="entry-title"><a href="/{{object.slug}}">{{object.title}}</a></h3>
 	<div class="details">
 
-		<div class="updated date">
-			<abbr title="{{object.date|date:"Y-m-d\TH:i:s+00:00"}}">
+		<time pubdate class="updated date" datetime="{{object.date|date:"Y-m-d\TH:i:s+00:00"}}">
 				<span class="month">{{object.date|date:"M"}}</span>
 				<span class="day">{{object.date|date:"d"}}</span>
 				<span class="year">{{object.date|date:"Y"}}</span>					
-			</abbr>
-		</div>
+		</time>
 
 	</div>
 	<div class="text entry-content" lang="{{object.lang.code}}">
@@ -39,5 +36,4 @@
 		{% endif %}
 	</div>
 	
-</div>
-<!--/HTML5:article-->
+</article>

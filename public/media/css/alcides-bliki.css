@@ -101,18 +101,24 @@ ul {
 	margin: auto;
 }
 
-.header {
+header {
 	width: 100%;
 	background-color: #12140F;
 	margin-bottom: 20px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+  display: block;
 }
 
-.header a {
+header a {
 	color: white;
 	text-decoration: none;
 	background-color: #12140F;
+}
+
+header a:hover {
+  background-color: #12140F;
+  color: #CCCCCC;
 }
 
 .author {
@@ -159,7 +165,8 @@ ul {
 	background-color: #333333;
 }
 
-.footer {
+footer {
+  display: block;
 	padding: 5px;
 	padding-top: 10px;
 	width: 50%;
