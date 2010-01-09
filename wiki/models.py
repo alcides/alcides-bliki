@@ -33,3 +33,8 @@ class Page(models.Model):
 		return self.pubdate != None
 	is_published.short_description = 'Published?'
 	is_published.boolean = True
+
+class PageVersion(models.Model):
+  page = models.ForeignKey(Page)
+  version = models.IntegerField()
+  text = models.TextField()
