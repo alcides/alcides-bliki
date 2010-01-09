@@ -38,3 +38,6 @@ class PageVersion(models.Model):
   page = models.ForeignKey(Page)
   version = models.IntegerField()
   text = models.TextField()
+  
+  def __unicode__(self):
+    return u'%s v%s' % (self.page.title, self.version)
