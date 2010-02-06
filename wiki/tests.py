@@ -32,16 +32,17 @@ class PageTestCase(unittest.TestCase):
     self.l.delete()
     PageVersion.objects.filter( id=self.c.id ).delete()
     self.c.delete()
+
+  def singleTestVersioning(self):
+    self.count_before = PageVersion.objects.filter(page__id=self.c.id).count()
+    self.c.text = self.c.text + " one bit"
+    self.c.save()
+    self.count_after = PageVersion.objects.filter(page__id=self.c.id).count()
+    self.assertEquals(self.count_before + 1, self.count_after)
     
   def testVersioning(self):
-    def iter(i):
-      self.count_before = PageVersion.objects.filter(page__id=self.c.id).count()
-      self.c.text = "after whatever %d" % i 
-      self.c.save()
-      self.count_after = PageVersion.objects.filter(page__id=self.c.id).count()
-      self.assertEquals(self.count_before + 1, self.count_after)
-    for i in range(5):
-      iter(i)
+    for _ in range(5):
+      self.singleTestVersioning()
     
   def testPageIsViewed(self):
     c = Client()
