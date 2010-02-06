@@ -1,7 +1,9 @@
 import os
+
+
 def relative(*x):
-	return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
-	
+    return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -10,17 +12,17 @@ ADMINS = (
 )
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = relative('db/dev.db') # Or path to database file if using sqlite3.
+DATABASE_ENGINE = 'sqlite3'
+DATABASE_NAME = relative('db/dev.db')
 DATABASE_USER = ''
 DATABASE_PASSWORD = ''
-DATABASE_HOST = ''             # empty -> localhost
-DATABASE_PORT = ''             # empty -> default
+DATABASE_HOST = ''
+DATABASE_PORT = ''
 
 SECRET_KEY = 'm-@7tq)&u2u(qzw&y@92l!ady4+$=1-rvj0y@n#-tlp!6pw1)c'
 
-TIME_ZONE = 'Europe/Lisbon' # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-LANGUAGE_CODE = 'en-us' # http://www.i18nguy.com/unicode/language-identifiers.html
+TIME_ZONE = 'Europe/Lisbon'
+LANGUAGE_CODE = 'en-us'
 SITE_ID = 1
 USE_I18N = True
 
@@ -36,28 +38,28 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
-  	'django.contrib.markup',
-  	'django.contrib.humanize',
-	'wiki',
-        'debug_toolbar',
+    'django.contrib.markup',
+    'django.contrib.humanize',
+    'wiki',
+    'debug_toolbar',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-	"django.core.context_processors.request",
-	"django.core.context_processors.auth",
-	"django.core.context_processors.debug",
-	"django.core.context_processors.i18n",
-	"django.core.context_processors.media"
+    "django.core.context_processors.request",
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
 )
 
 TEMPLATE_DIRS = (
-	relative('templates'),
+    relative('templates'),
 )
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
     'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
+#   'django.template.loaders.eggs.load_template_source',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -81,7 +83,7 @@ DEBUG_TOOLBAR_PANELS = (
 
 DEBUG_TOOLBAR_CONFIG = {
     'SHOW_TOOLBAR_CALLBACK': lambda x: DEBUG,
-	'INTERCEPT_REDIRECTS': False
+    'INTERCEPT_REDIRECTS': False,
 }
 
 
