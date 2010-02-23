@@ -29,3 +29,4 @@ def pygmentize(value):
         return to_return
     except:
         return value
+pygmentize.is_safe = True
