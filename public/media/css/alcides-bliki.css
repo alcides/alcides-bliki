@@ -284,6 +284,12 @@ footer {
 
 .subpages li a {
     background-color: #FFFD89;
+    color: black;
+}
+
+.subpages li a:hover {
+    background-color: #FFFD89;
+    color: black;
 }
 
 .subpages li {
