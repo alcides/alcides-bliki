@@ -256,6 +256,10 @@ footer {
 	text-align: justify;
 }
 
+.text img {
+    max-width: 640px;
+}
+
 .subpages h5 {
 	padding-top: 15px;
 	padding-bottom: 5px;
