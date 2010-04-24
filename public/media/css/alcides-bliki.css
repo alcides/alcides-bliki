@@ -26,7 +26,6 @@ p {
 	margin-bottom: 16px;
 	font-size: 100%;
 	outline: 0;
-    font: normal normal normal 13px/1.5 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
 }
 
 blockquote {
@@ -251,6 +250,7 @@ footer {
 }
 
 .text {
+    font: normal normal normal 13px/1.5 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
 	margin-top: 10px;
 	float: left;
 	width: 82%;
