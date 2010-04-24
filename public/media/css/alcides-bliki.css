@@ -11,6 +11,11 @@
 
 /* Typography */
 
+@font-face {
+    font-family: LeagueGothic;
+    src: url(../fonts/League:Gothic.otf) format(truetype);
+}
+
 body {
 	font-family: Helvetica, sans-serif;
 	font-size: 12px;
@@ -19,12 +24,16 @@ body {
 
 p {
 	margin-bottom: 16px;
+	font-size: 100%;
+	outline: 0;
+    font: normal normal normal 13px/1.5 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
 }
 
 blockquote {
-	border-left: solid #8FA193 5px;
+	border-left: solid black 5px;
+	background-color: #F9FFE8;
 	padding-left: 5px;
-	font-size: 15px;
+	font-size: 14px;
 	font-style: italic;
 	font-family: Georgia;
 }
@@ -77,13 +86,14 @@ ul {
 /* Color */
 
 a {
-	color: #45594E;
+	color: #000000;
+	background-color: #DDDDDD;
 	text-decoration: none;
 }
 
 a:hover {
-	background-color: #F4F3DE;
-	color: #3B4137;
+	background-color: #333333;
+	color: white;
 }
 
 .footnote {
@@ -107,7 +117,7 @@ header {
 	margin-bottom: 20px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-  display: block;
+    display: block;
 }
 
 header a {
@@ -186,10 +196,18 @@ footer {
 
 .entry-title a {
 	text-decoration: none;
+	font-family: "Futura", "LeagueGothic", Helvetica, Arial, sans-serif;
 	font-weight: normal;
-	background-color: #8FA193;
-	color: white;
+	color: black;
 	padding: 3px;
+    text-transform: uppercase;
+    color: black;
+    background-color: white;
+}
+
+.entry-title a:hover {
+    color: black;
+    background-color: white;
 }
 
 .updated {
@@ -202,19 +220,22 @@ footer {
 
 .date .year, .date .month, .date .day {
 	display: block;
-	color: #45594E;
-	font-weight: bold;
+	color: white;
+	font-weight: normal;
 	margin-bottom:10px;
 }
 
 .date .year {
 	font-size: 12pt;
+	margin-bottom: 5px;
 }
 .date .month {
+    margin-top: 5px;
 	font-size: 14pt;
 }
 .date .day {
 	font-size: 26pt;
+	margin-bottom: 5px;
 }
 
 
@@ -224,6 +245,7 @@ footer {
 	margin-right: 2%;
 	width: 5%;
 	margin-top: 5px;
+	background-color: black;
 	text-align: right;
 }
 
@@ -232,8 +254,6 @@ footer {
 	float: left;
 	width: 82%;
 	text-align: justify;
-	font-size: 14px;
-	line-height: 16px;
 }
 
 .subpages h5 {
@@ -262,7 +282,6 @@ footer {
 	margin: auto;
 	margin-top: 20px;
 	margin-bottom: 20px;
-	border-top: solid #45594E 1px;
 	padding-top: 10px;
 }
 
@@ -274,8 +293,8 @@ footer {
 	float: right;
 }
 
-.pagination a {
+.pagination a, .comments a {
 	display: block inline;
 	padding: 3px;
-	border: solid #45594E 1px;	
+	border: solid #333333 1px;	
 }
