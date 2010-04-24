@@ -55,10 +55,11 @@ h2 {
 }
 
 h3 {
-	font-size: 24px;
+	font-size: 20px;
 	line-height: 30px;
 	font-family: "Futura", "LeagueGothic", Helvetica, Arial, sans-serif;
 	text-transform: uppercase;
+	font-weight: normal;
 }
 
 h4 {
