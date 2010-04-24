@@ -271,6 +271,9 @@ footer {
 .subpages h5 {
 	padding-top: 15px;
 	padding-bottom: 5px;
+	font-family: "Futura", "LeagueGothic", Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+	font-weight: normal;
 }
 
 .subpages, .comments, .ads {
@@ -279,8 +282,8 @@ footer {
 	margin-bottom: 20px;
 }
 
-.subpages li a:hover {
-	color: red;
+.subpages li a {
+    background-color: #FFFD89;
 }
 
 .subpages li {
