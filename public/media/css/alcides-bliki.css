@@ -201,6 +201,8 @@ footer {
 	text-decoration: none;
 	font-family: "Futura", "LeagueGothic", Helvetica, Arial, sans-serif;
 	font-weight: normal;
+	font-size: 25px;
+	line-height: 30px;
 	color: black;
 	padding: 3px;
     text-transform: uppercase;
