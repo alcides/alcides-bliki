@@ -90,7 +90,7 @@ ul {
 
 a {
 	color: #000000;
-	background-color: #DDDDDD;
+	background-color: #D9F1D9;
 	text-decoration: none;
 }
 
@@ -262,6 +262,10 @@ footer {
 
 .text img {
     max-width: 640px;
+}
+
+.text a {
+	background-color: #D6E5F1;
 }
 
 .subpages h5 {
