@@ -12,6 +12,13 @@
 					<a href="/{{ object.slug }}/#disqus_thread">Comments (View)</a>
 				</div>
 			</div>
+			{% if forloop.first %}
+				<div class="ads">
+					<h6>Ads:</h6>
+					{% load tla %}
+					{% tla_list request %}
+				</div>
+			{% endif %}
 	    {% endfor %}
 	</div>
 	

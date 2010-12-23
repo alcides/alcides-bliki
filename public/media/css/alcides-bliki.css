@@ -320,3 +320,7 @@ footer {
 	padding: 3px;
 	border: solid #333333 1px;	
 }
+
+.pages_list .ads {
+    background-color: #EBEBEB;
+}
