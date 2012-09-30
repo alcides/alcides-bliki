@@ -1,4 +1,4 @@
-from django.contrib.syndication.feeds import Feed, FeedDoesNotExist
+from django.contrib.syndication.views import Feed
 from models import Page, Language
 
 import datetime
