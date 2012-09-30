@@ -1,4 +1,5 @@
 django>=1.4
+elementtree
 Pygments
 django-debug-toolbar
 -e git+git://github.com/jsamsa/python-textile.git#egg=textile
