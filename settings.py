@@ -28,7 +28,8 @@ USE_I18N = True
 
 MEDIA_ROOT = relative('public/media/')
 MEDIA_URL = '/media/'
-ADMIN_MEDIA_PREFIX = '/admin-media/'
+STATIC_ROOT = relative('public/static/')
+STATIC_URL = '/static/'
 
 ROOT_URLCONF = 'urls'
 
@@ -39,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.markup',
+    'django.contrib.staticfiles',
     'django.contrib.humanize',
     'wiki',
     'debug_toolbar',
