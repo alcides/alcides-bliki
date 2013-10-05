@@ -153,6 +153,9 @@ header a:hover {
 	float: left;
 	margin: 5px;
 	margin-right: 3%;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
 }
 
 .author .links {
