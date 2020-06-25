@@ -20,7 +20,12 @@ DATABASES = {
     }
 }
 
-SECRET_KEY = 'm-@7tq)&u2u(qzw&y@92l!ady4+$=1-rvj0y@n#-tlp!6pw1)c'
+SECRET_KEY = ''
+
+try:
+    from local_settings import *
+except:
+    pass
 
 
 LANGUAGE_CODE = 'en-us'
