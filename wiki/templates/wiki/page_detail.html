@@ -6,11 +6,6 @@
 {% block content %}
 	{% include "wiki/page.html" %}
 	
-	<div class="ads">
-		{% load tla %}
-		{% tla_list request %}
-	</div>
-	
 	<div class="comments">
 		<div id="disqus_thread"></div>
 		<script type="text/javascript" src="http://disqus.com/forums/alcides/embed.js"></script>

@@ -1,5 +1,5 @@
 from django.contrib.syndication.views import Feed
-from models import Page, Language
+from .models import Page, Language
 
 import datetime
 

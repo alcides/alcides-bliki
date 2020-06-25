@@ -1,4 +1,4 @@
-{% load markup %}
+{% load markitup_tags %}
 {% load humanize %}
 {% load pygmentation %}
 {% load subpages %}
@@ -17,7 +17,7 @@
 	</div>
 	<div class="text entry-content" lang="{{object.lang.code}}">
 		{% autoescape off %}
-		    {{object.text|textile}}
+		    {{object.text|render_markup}}
 		{% endautoescape %}
 		
 	</div>

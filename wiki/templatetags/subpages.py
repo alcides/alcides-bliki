@@ -1,5 +1,5 @@
 from wiki.models import Page
-from django.template import Library,Node, resolve_variable
+from django.template import Library, Node, Variable
 
 register = Library()
 
@@ -9,7 +9,7 @@ def show_subpages(parser, token):
     try:
         tag_name, page_slug = token.split_contents()
     except ValueError:
-        raise TemplateSyntaxError, "%r tag requires exactly one arguments" % token.contents.split()[0]
+        raise TemplateSyntaxError("%r tag requires exactly one arguments" % token.contents.split()[0])
     return SubpageListObject(page_slug)
 
 class SubpageListObject(Node):
@@ -17,7 +17,7 @@ class SubpageListObject(Node):
         self.slug = slug
 
     def render(self, context): 
-        context['subpages'] = Page.objects.filter(slug__startswith=str(resolve_variable(self.slug,context))+"/")
+        context['subpages'] = Page.objects.filter(slug__startswith=str(Variable(self.slug).resolve(context))+"/")
         return ''
 
 register.tag('get_subpages', show_subpages)

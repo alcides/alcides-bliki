@@ -5,7 +5,8 @@ def relative(*x):
     return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+ALLOWED_HOSTS = []
+
 
 ADMINS = (
     ('Alcides', 'me@alcidesfonseca.com'),
@@ -21,13 +22,15 @@ DATABASES = {
 
 SECRET_KEY = 'm-@7tq)&u2u(qzw&y@92l!ady4+$=1-rvj0y@n#-tlp!6pw1)c'
 
-TIME_ZONE = 'Europe/Lisbon'
+
 LANGUAGE_CODE = 'en-us'
-SITE_ID = 1
+TIME_ZONE = 'Europe/Lisbon'
 USE_I18N = True
+USE_L10N = True
+USE_TZ = True
 
 MEDIA_ROOT = relative('public/media/')
-MEDIA_URL = '/media/'
+MEDIA_URL = '/public/media/'
 STATIC_ROOT = relative('public/static/')
 STATIC_URL = '/static/'
 
@@ -36,61 +39,62 @@ ROOT_URLCONF = 'urls'
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.messages',
     'django.contrib.sessions',
-    'django.contrib.sites',
     'django.contrib.admin',
-    'django.contrib.markup',
+    'django.contrib.sites',
+    'markup_deprecated',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'markitup',
     'wiki',
-    'debug_toolbar',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.static",
-    "django.core.context_processors.request",
-    "django.core.context_processors.tz",
-    "django.contrib.messages.context_processors.messages"
-)
 
-TEMPLATE_DIRS = (
-    relative('templates'),
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        "DIRS": ["wiki/templates/"],
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+            ]
+        },
+    },
+]
 
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader'
-)
 
-MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
+WSGI_APPLICATION = 'wiki.wsgi.application'
+
+
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-)
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
 
-DEBUG_TOOLBAR_PANELS = (
-    'debug_toolbar.panels.version.VersionDebugPanel',
-    'debug_toolbar.panels.timer.TimerDebugPanel',
-    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
-    'debug_toolbar.panels.headers.HeaderDebugPanel',
-    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
-    'debug_toolbar.panels.template.TemplateDebugPanel',
-    'debug_toolbar.panels.sql.SQLDebugPanel',
-    'debug_toolbar.panels.signals.SignalDebugPanel',
-    'debug_toolbar.panels.logger.LoggingPanel',
-)
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
 
-DEBUG_TOOLBAR_CONFIG = {
-    'SHOW_TOOLBAR_CALLBACK': lambda x: DEBUG,
-    'INTERCEPT_REDIRECTS': False,
-}
-
-
-TLA_INVENTORY_KEY = "25LJA78VKLLE2CSXVBCR"
+MARKITUP_FILTER = ('django_markwhat.templatetags.markup.textile', {})
