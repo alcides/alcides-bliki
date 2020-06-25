@@ -11,9 +11,12 @@
 
 /* Typography */
 
-@font-face {
-    font-family: LeagueGothic;
-    src: url(../fonts/League:Gothic.otf) format(truetype);
+@import url('https://rsms.me/inter/inter.css');
+
+html { font-family: 'Inter', sans-serif; }
+
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
 }
 
 body {
@@ -57,7 +60,6 @@ h2 {
 h3 {
 	font-size: 18px;
 	line-height: 20px;
-	font-family: "Futura", "LeagueGothic", Helvetica, Arial, sans-serif;
 	text-transform: uppercase;
 	font-weight: normal;
 }
@@ -201,7 +203,6 @@ footer {
 
 .entry-title a {
 	text-decoration: none;
-	font-family: "Futura", "LeagueGothic", Helvetica, Arial, sans-serif;
 	font-weight: normal;
 	font-size: 25px;
 	line-height: 30px;
@@ -257,7 +258,6 @@ footer {
 }
 
 .text {
-    font: normal normal normal 13px/1.5 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
 	margin-top: 10px;
 	float: left;
 	width: 82%;
@@ -275,7 +275,6 @@ footer {
 .subpages h5 {
 	padding-top: 15px;
 	padding-bottom: 5px;
-	font-family: "Futura", "LeagueGothic", Helvetica, Arial, sans-serif;
 	text-transform: uppercase;
 	font-weight: normal;
 }
