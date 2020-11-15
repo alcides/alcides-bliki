@@ -9,18 +9,28 @@
 	clear: both;
 }
 
+a.hidden {
+	display: none;
+}
+
 /* Typography */
 
-@font-face {
-    font-family: LeagueGothic;
-    src: url(../fonts/League:Gothic.otf) format(truetype);
-}
+@import url('https://fonts.googleapis.com/css?family=Merriweather:300|Work+Sans:700,800');
+
+
 
 body {
-	font-family: Helvetica, sans-serif;
-	font-size: 12px;
-	line-height: 16px;
+	font-family: 'Merriweather', serif;
+    font-weight: 300;
+	font-size: 11pt;
+	line-height: 150%;
 }
+
+h1, h2, h3, h4, h5, h6, header {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 800;
+}
+
 
 p {
 	margin-bottom: 16px;
@@ -51,15 +61,14 @@ h1 {
 h2 {
 	font-size: 36px;
 	line-height: 40px;
-	text-transform: uppercase;
+font-variant: small-caps;
 }
 
 h3 {
 	font-size: 18px;
 	line-height: 20px;
-	font-family: "Futura", "LeagueGothic", Helvetica, Arial, sans-serif;
-	text-transform: uppercase;
 	font-weight: normal;
+font-variant: small-caps;
 }
 
 h4 {
@@ -125,6 +134,7 @@ header {
 header a {
 	color: white;
 	text-decoration: none;
+	font-weight: normal;
 	background-color: #12140F;
 }
 
@@ -201,13 +211,11 @@ footer {
 
 .entry-title a {
 	text-decoration: none;
-	font-family: "Futura", "LeagueGothic", Helvetica, Arial, sans-serif;
 	font-weight: normal;
 	font-size: 25px;
 	line-height: 30px;
 	color: black;
 	padding: 3px;
-    text-transform: uppercase;
     color: black;
     background-color: white;
 }
@@ -229,7 +237,7 @@ footer {
 	display: block;
 	color: white;
 	font-weight: normal;
-	margin-bottom:10px;
+	margin-bottom:13px;
 }
 
 .date .year {
@@ -238,11 +246,11 @@ footer {
 }
 .date .month {
     margin-top: 5px;
-	font-size: 14pt;
+	font-size: 17pt;
 }
 .date .day {
 	font-size: 26pt;
-	margin-bottom: 5px;
+	margin-bottom: 13px;
 }
 
 
@@ -250,14 +258,13 @@ footer {
 	float: left;
 	margin-left: 3%;
 	margin-right: 2%;
-	width: 5%;
+	width: 50px;
 	margin-top: 5px;
 	background-color: black;
 	text-align: right;
 }
 
 .text {
-    font: normal normal normal 13px/1.5 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
 	margin-top: 10px;
 	float: left;
 	width: 82%;
@@ -275,9 +282,8 @@ footer {
 .subpages h5 {
 	padding-top: 15px;
 	padding-bottom: 5px;
-	font-family: "Futura", "LeagueGothic", Helvetica, Arial, sans-serif;
-	text-transform: uppercase;
-	font-weight: normal;
+	font-variant: small-caps;
+font-weight: normal;
 }
 
 .subpages, .comments, .ads {
@@ -327,3 +333,4 @@ footer {
 .pages_list .ads {
     background-color: #EBEBEB;
 }
+
