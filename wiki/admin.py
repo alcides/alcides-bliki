@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.contrib import admin
-from wiki.models import Language, Page, PageVersion
+from wiki.models import ImageUpload, Language, Page, PageVersion
 	
 def publish(modeladmin, req, qs):
   qs.update(pubdate=datetime.now())
@@ -38,3 +38,4 @@ class PageVersionAdmin(admin.ModelAdmin):
 admin.site.register(Language)
 admin.site.register(Page, PageAdmin)
 admin.site.register(PageVersion, PageVersionAdmin)
+admin.site.register(ImageUpload)

@@ -1,0 +1,371 @@
+/* Reset */
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+a.hidden {
+	display: none;
+}
+
+/* Typography */
+
+@import url('https://fonts.googleapis.com/css?family=Merriweather:300|Work+Sans:700,800');
+
+
+code,
+pre {
+	margin: 0;
+	padding: 0;
+}
+
+pre {
+	border-top: solid #CCC 1px;
+	border-bottom: solid #CCC 1px;
+	background-color: white;
+	margin-bottom: 20px;
+}
+
+
+body {
+	font-family: 'Merriweather', serif;
+	font-weight: 300;
+	font-size: 11pt;
+	line-height: 150%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header {
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 800;
+}
+
+
+p {
+	margin-bottom: 16px;
+	font-size: 100%;
+	outline: 0;
+}
+
+blockquote {
+	border-left: solid black 5px;
+	background-color: #F9FFE8;
+	padding-left: 5px;
+	font-size: 14px;
+	font-style: italic;
+	font-family: Georgia;
+	margin-bottom: 16px;
+}
+
+b {
+	font-variant: small-caps;
+}
+
+h1 {
+	font-size: 48px;
+	line-height: 50px;
+	font-weight: normal;
+}
+
+h2 {
+	font-size: 36px;
+	line-height: 40px;
+	font-variant: small-caps;
+}
+
+h3 {
+	font-size: 18px;
+	line-height: 20px;
+	text-transform: uppercase;
+	font-weight: normal;
+	font-variant: small-caps;
+}
+
+h4 {
+	font-size: 21px;
+	line-height: 25px;
+}
+
+h5 {
+	font-size: 18px;
+	line-height: 20px;
+}
+
+h6 {
+	font-size: 16px;
+	line-height: 18px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-top: 5px;
+}
+
+ul {
+	margin: 5px;
+	margin-bottom: 10px;
+}
+
+/* Color */
+
+a {
+	color: #000000;
+	background-color: #D9F1D9;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #333333;
+}
+
+.footnote {
+	font-size: 8pt;
+}
+
+/* Layout */
+
+ul {
+	list-style-position: inside;
+}
+
+.wrap {
+	max-width: 90%;
+	min-width: 150px;
+	margin: auto;
+}
+
+header {
+	width: 100%;
+	background-color: #12140F;
+	margin-bottom: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: block;
+}
+
+header a {
+	color: white;
+	text-decoration: none;
+	font-weight: normal;
+	background-color: #12140F;
+}
+
+header a:hover {
+	background-color: #12140F;
+	color: #CCCCCC;
+}
+
+.author {
+	margin: auto;
+	margin-left: 10%;
+	text-align: left;
+}
+
+.author h1 {
+	float: left;
+	text-align: left;
+}
+
+.author h1 a {
+	display: block;
+	padding-top: 15px;
+}
+
+.author img.photo {
+	float: left;
+	margin: 5px;
+	margin-right: 3%;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+}
+
+.author .links {
+	float: right;
+	margin-top: 25px;
+	margin-right: 30px;
+}
+
+.author .links li {
+	list-style: none;
+	float: right;
+}
+
+.author .links li a {
+	display: block;
+	padding: 3px;
+	margin: 5pt;
+	width: auto;
+}
+
+.author .links li a:hover {
+	background-color: #333333;
+}
+
+footer {
+	display: block;
+	padding: 5px;
+	padding-top: 10px;
+	width: 50%;
+	margin: auto;
+	margin-top: 20px;
+	clear: both;
+	text-align: center;
+	background-color: #8FA193;
+	color: #12140F;
+}
+
+
+.entry-title {
+	margin-top: 30px;
+	margin-left: 10%;
+}
+
+.entry-title a {
+	text-decoration: none;
+	font-weight: normal;
+	font-size: 25px;
+	line-height: 30px;
+	color: black;
+	padding: 3px;
+	color: black;
+	background-color: white;
+}
+
+.entry-title a:hover {
+	color: black;
+	background-color: white;
+}
+
+.updated {
+	margin-top: 10px;
+}
+
+.date {
+	text-align: center;
+}
+
+.date .year,
+.date .month,
+.date .day {
+	display: block;
+	color: white;
+	font-weight: normal;
+	margin-bottom: 13px;
+}
+
+.date .year {
+	font-size: 12pt;
+	margin-bottom: 5px;
+}
+
+.date .month {
+	margin-top: 5px;
+	font-size: 17pt;
+}
+
+.date .day {
+	font-size: 26pt;
+	margin-bottom: 13px;
+}
+
+
+.details {
+	float: left;
+	margin-left: 3%;
+	margin-right: 2%;
+	width: 50px;
+	margin-top: 5px;
+	background-color: black;
+	text-align: right;
+}
+
+.text {
+	margin-top: 10px;
+	float: left;
+	width: 82%;
+	text-align: justify;
+}
+
+.text img {
+	max-width: 640px;
+}
+
+.text a {
+	background-color: #D6E5F1;
+}
+
+.subpages h5 {
+	padding-top: 15px;
+	padding-bottom: 5px;
+	<<<<<<< HEAD: public/media/css/alcides-bliki.css font-variant: small-caps;
+	font-weight: normal;
+	=======text-transform: uppercase;
+	font-weight: normal;
+	>>>>>>>17ae9e97d7209af9095c5fddb60341ce56919df1: wiki/static/css/alcides-bliki.css
+}
+
+.subpages,
+.comments,
+.ads {
+	clear: both;
+	margin-left: 10%;
+	margin-bottom: 20px;
+}
+
+.subpages li a {
+	background-color: #FFFD89;
+	color: black;
+}
+
+.subpages li a:hover {
+	background-color: #FFFD89;
+	color: black;
+}
+
+.subpages li {
+	list-style: none;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.pagination {
+	width: 100%;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-top: 10px;
+}
+
+.pagination .previous {
+	float: left;
+}
+
+.pagination .next {
+	float: right;
+}
+
+.pagination a,
+.comments a {
+	display: block inline;
+	padding: 3px;
+	border: solid #333333 1px;
+}
+
+.pages_list .ads {
+	background-color: #EBEBEB;
+}

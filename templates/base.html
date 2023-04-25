@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE HTML>
 <html>
 
@@ -8,11 +9,11 @@
 	<!-- Style -->
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="icon" href="/favicon.ico" />
-	<link rel="pavatar" href="//alcidesfonseca.com/media/images/alcides_small.jpg" />
+	<link rel="pavatar" href="//alcidesfonseca.com/static/images/alcides_small.jpg" />
 	<meta name="viewport" content="width = 320" />
 	<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Work+Sans:700,800" rel="stylesheet">
-	<link rel="stylesheet" href="/media/css/alcides-bliki.css" />
-	<link rel="stylesheet" href="/media/css/syntax.css" />
+	<link rel="stylesheet" href="{% static 'css/alcides-bliki.css' %}" />
+	<link rel="stylesheet" href="/static/css/syntax.css" />
 
 	<!-- Feeds -->
 	<link rel="alternate" type="application/rss+xml" title="Alcides Fonseca (pt+en)"

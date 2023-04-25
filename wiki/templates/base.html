@@ -1,39 +1,70 @@
+{% load static %}
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<meta charset="UTF-8" />
-		<title>{% block title %}Homepage{% endblock %}</title>
-		
-		<!-- Style -->	
-		<link rel="stylesheet" href="/static/media/css/syntax.css" />
-		
-		<script src="/static/js/prototype.js" type="text/javascript" charset="utf-8"></script>
-		<script src="/static/js/scriptaculous.js" type="text/javascript" charset="utf-8"></script>
-		<script src="/static/js/wiki.js" type="text/javascript" charset="utf-8"></script>	
-				
-		<!-- Feeds -->
-		<link rel="alternate" type="application/rss+xml" title="Bliki" href="/feeds/all/" />
 
-	</head>
-	<body>
-		<div class="wrap_header">
+<head>
+	<meta charset="UTF-8" />
+	<title>{% block title %}Homepage{% endblock %} by Alcides Fonseca</title>
 
-			<header>
-				<h1><a href="/">Bliki</a></h1>
-			</header>
-		</div>
-		
-		<div class="wrap">
-			<section>
-				{% block content %}{% endblock %}
-			</section>
-			
+	<!-- Style -->
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="icon" href="/favicon.ico" />
+	<link rel="pavatar" href="//alcidesfonseca.com/static/images/alcides_small.jpg" />
+	<meta name="viewport" content="width = 320" />
+	<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Work+Sans:700,800" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/alcides-bliki.css' %}" />
+	<link rel="stylesheet" href="/static/css/syntax.css" />
+
+	<!-- Feeds -->
+	<link rel="alternate" type="application/rss+xml" title="Alcides Fonseca (pt+en)"
+		href="http://feeds.feedburner.com/alcides" />
+	<link rel="alternate" type="application/rss+xml" title="Alcides Fonseca (en)"
+		href="http://feeds.feedburner.com/alcides/en" />
+
+	<!-- OpenID -->
+	<link rel="openid.server" href="http://www.myopenid.com/server" />
+	<link rel="openid.delegate" href="http://alcides.myopenid.com/" />
+
+	<!-- Semantic -->
+	<link rel="meta" type="application/rdf+xml" title="FOAF" href="/static/files/foaf.rdf" />
+	<link rel="search" type="application/opensearchdescription+xml" href="/static/files/opensearch.xml"
+		title="Search Alcides Fonseca" />
+
+	<!-- HTML5 -->
+	<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+	<header>
+		<div class="agent vcard author" id="hCard">
+			<img class="photo" src="/static/images/alcides_small.jpg" alt="" />
+			<h1><a class="url fn uid" rel="me" href="/">Alcides Fonseca</a></h1>
+
+			<ul class="links">
+				<li><a href="/about/" rel="me">About</a></li>
+				<li><a href="/research/team/">Team</a></li>
+				<li><a href="/research/service/" rel="me">Service</a></li>
+				<li><a href="/research/projects/" rel="me">Projects</a></li>
+				<li><a href="/teaching/" rel="me">Teaching</a></li>
+			</ul>
+			<div style="display:none">
+				<time class="bday" datetime="1988-11-24T01:55:00Z">Nov 24, 1988</time>
+				<span class="geo">
+					<span class="latitude">40.197958</span>,
+					<span class="longitude">-8.408312</span>
+				</span>
+			</div>
+
 			<div class="clear"></div>
-			
-			<footer>
-				{% block footer %}{% endblock %}
-			</footer>
 		</div>
-		
-	</body>
+	</header>
+	<div class="wrap">
+		<section>
+			{% block content %}{% endblock %}
+		</section>
+	</div>
+</body>
+
 </html>
