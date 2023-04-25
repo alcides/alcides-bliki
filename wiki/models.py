@@ -12,10 +12,10 @@ class Language(models.Model):
 class Page(models.Model):
 	title = models.CharField(blank=True, max_length=180)
 	slug = models.CharField(max_length=60)
-	lang = models.ForeignKey(Language)
+	lang = models.ForeignKey(Language, on_delete=models.CASCADE)
 	pubdate = models.DateTimeField(blank=True,null=True)
 	date = models.DateTimeField(auto_now=True)
-	author = models.ForeignKey(User)
+	author = models.ForeignKey(User, on_delete=models.CASCADE)
 	text = models.TextField()
 	
 	class Meta:
@@ -35,7 +35,7 @@ class Page(models.Model):
 	is_published.boolean = True
 
 class PageVersion(models.Model):
-  page = models.ForeignKey(Page)
+  page = models.ForeignKey(Page, on_delete=models.CASCADE)
   version = models.IntegerField()
   text = models.TextField()
   

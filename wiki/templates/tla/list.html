@@ -2,10 +2,10 @@
 
 {% cache 21600 tla %}
 <ul id="tla">
-{% if links %}
+    {% if links %}
     {% for link in links %}
     <li>{{ link.before_text }} <a href="{{ link.url }}">{{ link.text }}</a> {{ link.after_text }}</li>
     {% endfor %}
-{% endif %}
+    {% endif %}
 </ul>
 {% endcache %}

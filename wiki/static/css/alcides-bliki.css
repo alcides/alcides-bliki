@@ -18,7 +18,8 @@ a.hidden {
 @import url('https://fonts.googleapis.com/css?family=Merriweather:300|Work+Sans:700,800');
 
 
-code, pre {
+code,
+pre {
 	margin: 0;
 	padding: 0;
 }
@@ -33,14 +34,20 @@ pre {
 
 body {
 	font-family: 'Merriweather', serif;
-    font-weight: 300;
+	font-weight: 300;
 	font-size: 11pt;
 	line-height: 150%;
 }
 
-h1, h2, h3, h4, h5, h6, header {
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 800;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header {
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 800;
 }
 
 
@@ -73,14 +80,15 @@ h1 {
 h2 {
 	font-size: 36px;
 	line-height: 40px;
-font-variant: small-caps;
+	font-variant: small-caps;
 }
 
 h3 {
 	font-size: 18px;
 	line-height: 20px;
+	text-transform: uppercase;
 	font-weight: normal;
-font-variant: small-caps;
+	font-variant: small-caps;
 }
 
 h4 {
@@ -90,7 +98,7 @@ h4 {
 
 h5 {
 	font-size: 18px;
-	line-height: 20px;	
+	line-height: 20px;
 }
 
 h6 {
@@ -98,7 +106,12 @@ h6 {
 	line-height: 18px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	margin-top: 5px;
 }
 
@@ -141,7 +154,7 @@ header {
 	margin-bottom: 20px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-    display: block;
+	display: block;
 }
 
 header a {
@@ -152,8 +165,8 @@ header a {
 }
 
 header a:hover {
-  background-color: #12140F;
-  color: #CCCCCC;
+	background-color: #12140F;
+	color: #CCCCCC;
 }
 
 .author {
@@ -204,7 +217,7 @@ header a:hover {
 }
 
 footer {
-  display: block;
+	display: block;
 	padding: 5px;
 	padding-top: 10px;
 	width: 50%;
@@ -229,13 +242,13 @@ footer {
 	line-height: 30px;
 	color: black;
 	padding: 3px;
-    color: black;
-    background-color: white;
+	color: black;
+	background-color: white;
 }
 
 .entry-title a:hover {
-    color: black;
-    background-color: white;
+	color: black;
+	background-color: white;
 }
 
 .updated {
@@ -246,21 +259,25 @@ footer {
 	text-align: center;
 }
 
-.date .year, .date .month, .date .day {
+.date .year,
+.date .month,
+.date .day {
 	display: block;
 	color: white;
 	font-weight: normal;
-	margin-bottom:13px;
+	margin-bottom: 13px;
 }
 
 .date .year {
 	font-size: 12pt;
 	margin-bottom: 5px;
 }
+
 .date .month {
-    margin-top: 5px;
+	margin-top: 5px;
 	font-size: 17pt;
 }
+
 .date .day {
 	font-size: 26pt;
 	margin-bottom: 13px;
@@ -285,7 +302,7 @@ footer {
 }
 
 .text img {
-    max-width: 640px;
+	max-width: 640px;
 }
 
 .text a {
@@ -295,24 +312,29 @@ footer {
 .subpages h5 {
 	padding-top: 15px;
 	padding-bottom: 5px;
-	font-variant: small-caps;
-font-weight: normal;
+	<<<<<<< HEAD: public/media/css/alcides-bliki.css font-variant: small-caps;
+	font-weight: normal;
+	=======text-transform: uppercase;
+	font-weight: normal;
+	>>>>>>>17ae9e97d7209af9095c5fddb60341ce56919df1: wiki/static/css/alcides-bliki.css
 }
 
-.subpages, .comments, .ads {
+.subpages,
+.comments,
+.ads {
 	clear: both;
 	margin-left: 10%;
 	margin-bottom: 20px;
 }
 
 .subpages li a {
-    background-color: #FFFD89;
-    color: black;
+	background-color: #FFFD89;
+	color: black;
 }
 
 .subpages li a:hover {
-    background-color: #FFFD89;
-    color: black;
+	background-color: #FFFD89;
+	color: black;
 }
 
 .subpages li {
@@ -337,13 +359,13 @@ font-weight: normal;
 	float: right;
 }
 
-.pagination a, .comments a {
+.pagination a,
+.comments a {
 	display: block inline;
 	padding: 3px;
-	border: solid #333333 1px;	
+	border: solid #333333 1px;
 }
 
 .pages_list .ads {
-    background-color: #EBEBEB;
+	background-color: #EBEBEB;
 }
-
