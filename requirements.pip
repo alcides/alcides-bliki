@@ -2,3 +2,4 @@ django==4.2
 Pygments
 django-debug-toolbar
 textile[imagesize]
+django-markup[all_filter_dependencies]

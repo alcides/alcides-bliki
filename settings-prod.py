@@ -13,4 +13,4 @@ DATABASES = {
 DEBUG_TOOLBAR_CONFIG = {
     'SHOW_TOOLBAR_CALLBACK': lambda x: False,
 }
-ALLOWED_HOSTS = ['alcidesfonseca.com', 'localhost']
+ALLOWED_HOSTS = ['alcidesfonseca.com', 'localhost', 'wiki.alcidesfonseca.com']
