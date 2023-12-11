@@ -1,0 +1,3 @@
+[console_scripts]
+pytextile = textile.__main__:main
+

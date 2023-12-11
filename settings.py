@@ -6,6 +6,7 @@ def relative(*x):
 
 DEBUG = True
 ALLOWED_HOSTS = []
+SITE_ID = 1
 
 
 ADMINS = (
@@ -20,7 +21,7 @@ DATABASES = {
     }
 }
 
-SECRET_KEY = ''
+SECRET_KEY = 'ABC12344'
 
 try:
     from local_settings import *
@@ -35,11 +36,12 @@ USE_L10N = True
 USE_TZ = True
 
 MEDIA_ROOT = relative('public/media/')
-MEDIA_URL = '/public/media/'
+MEDIA_URL = '/media/'
 STATIC_ROOT = relative('public/static/')
 STATIC_URL = '/static/'
 
 ROOT_URLCONF = 'urls'
+APPEND_SLASH = True
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -48,10 +50,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.admin',
     'django.contrib.sites',
-    'markup_deprecated',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'markitup',
+    'django_markup',
     'wiki',
 )
 
@@ -75,7 +76,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wiki.wsgi.application'
 
-
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -101,5 +102,3 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-MARKITUP_FILTER = ('django_markwhat.templatetags.markup.textile', {})

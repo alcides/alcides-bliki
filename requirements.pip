@@ -1,6 +1,5 @@
-django>=1.4
+django==4.2
 Pygments
 django-debug-toolbar
 textile[imagesize]
-django_markwhat
-django-markitup
+django-markup[all_filter_dependencies]

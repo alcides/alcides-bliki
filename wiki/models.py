@@ -1,13 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.urls import reverse
 
 class Language(models.Model):
 	name =  models.CharField(blank=True, max_length=100)
 	code = models.CharField(blank=True, max_length=10)
 		
-	def __unicode__(self):
-		return u'%s' % (self.name)
+	def __str__(self):
+		return f'{self.name}'
 
 class Page(models.Model):
 	title = models.CharField(blank=True, max_length=180)
@@ -22,11 +23,11 @@ class Page(models.Model):
 		ordering = ['-date']
 		get_latest_by = "date"
 		
-	def __unicode__(self):
-		return u'%s' % (self.title)
+	def __str__(self):
+		return f'{self.title}'
 	
 	def get_absolute_url(self):
-		return "/%s/" % self.slug
+		return reverse("page_detail", kwargs={"slug": self.slug})
 		
 	def is_published(self):
 		return self.pubdate != None
@@ -35,9 +36,16 @@ class Page(models.Model):
 	is_published.boolean = True
 
 class PageVersion(models.Model):
-  page = models.ForeignKey(Page, on_delete=models.CASCADE)
-  version = models.IntegerField()
-  text = models.TextField()
-  
-  def __unicode__(self):
-    return u'%s v%s' % (self.page.title, self.version)
+	page = models.ForeignKey(Page, on_delete=models.CASCADE)
+	version = models.IntegerField()
+	text = models.TextField()
+	
+	def __str__(self):
+		return f"{self.page.title} v{self.version}"
+	
+
+class ImageUpload(models.Model):
+	image = models.ImageField(upload_to="images")
+
+	def __str__(self):
+		return f"{self.image}"

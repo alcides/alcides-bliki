@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: textile
+Version: 4.0.2
+Summary: Textile processing for python.
+Home-page: http://github.com/textile/python-textile
+Author: Dennis Burke
+Author-email: ikirudennis@gmail.com
+License: UNKNOWN
+Keywords: textile,text,html markup
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.5
+License-File: LICENSE.txt
+Requires-Dist: html5lib (>=1.0.1)
+Requires-Dist: regex (>1.0) ; implementation_name != "pypy"
+Provides-Extra: develop
+Requires-Dist: pytest ; extra == 'develop'
+Requires-Dist: pytest-cov ; extra == 'develop'
+Provides-Extra: imagesize
+Requires-Dist: Pillow (>=3.0.0) ; extra == 'imagesize'
+
+UNKNOWN
+

@@ -1,5 +1,5 @@
 from wiki.models import Page
-from django.template import Library, Node, Variable
+from django.template import Library, Node, TemplateSyntaxError, Variable
 
 register = Library()
 

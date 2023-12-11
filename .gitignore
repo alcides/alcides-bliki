@@ -6,4 +6,4 @@ db
 fixtures
 .DS_Store
 public/admin-media
-public/static/
+public/static/.venv

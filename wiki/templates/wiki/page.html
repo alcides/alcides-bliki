@@ -1,39 +1,39 @@
-{% load markitup_tags %}
 {% load humanize %}
 {% load pygmentation %}
 {% load subpages %}
 {% get_subpages object.slug %}
+{% load markup_tags %}
 
 <article class="hentry">
 	<h3 class="entry-title"><a href="/{{object.slug}}">{{object.title}}</a></h3>
 	<div class="details">
 
-		<time pubdate class="updated date" datetime="{{object.date|date:"Y-m-d\TH:i:s+00:00"}}">
-				<span class="month">{{object.date|date:"M"}}</span>
-				<span class="day">{{object.date|date:"d"}}</span>
-				<span class="year">{{object.date|date:"Y"}}</span>					
+		<time pubdate class="updated date" datetime="{{object.date|date:" Y-m-d\TH:i:s+00:00"}}">
+			<span class="month">{{object.date|date:"M"}}</span>
+			<span class="day">{{object.date|date:"d"}}</span>
+			<span class="year">{{object.date|date:"Y"}}</span>
 		</time>
 
 	</div>
 	<div class="text entry-content" lang="{{object.lang.code}}">
 		{% autoescape off %}
-		    {{object.text|render_markup}}
+		{{object.text|apply_markup:"textile"}}
 		{% endautoescape %}
-		
+
 	</div>
-	
+
 	<div class="subpages">
-		
-		
+
+
 		{% if subpages %}
-			<h5>Subpages:</h5>
-			<ul>
-				{% for p in subpages %}
-					<li>({{p.date|naturalday:"d M Y"}}) <a href="/{{p.slug}}">{{p.title}}</a></li>
-				{% endfor %}
-			</ul>
-	
+		<h5>Subpages:</h5>
+		<ul>
+			{% for p in subpages %}
+			<li>({{p.date|naturalday:"d M Y"}}) <a href="{% url 'page_detail' p.slug %}">{{p.title}}</a></li>
+			{% endfor %}
+		</ul>
+
 		{% endif %}
 	</div>
-	
+
 </article>
