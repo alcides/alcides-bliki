@@ -9,110 +9,88 @@
 	clear: both;
 }
 
-a.hidden {
+.hidden {
 	display: none;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+.wrap {
+	flex: 1;
 }
 
 /* Typography */
 
-@import url('https://fonts.googleapis.com/css?family=Merriweather:300|Work+Sans:700,800');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Merriweather:0,100..900|Work+Sans:0,100..900|Montserrat:ital,wght@0,100..900;1,100..900|Reddit+Mono:wght@200..900');
 
 
 code,
 pre {
 	margin: 0;
 	padding: 0;
+
+	font-family: "Reddit Mono", monospace;
+  	font-optical-sizing: auto;
+	font-size: 10pt;
+
+	color: #0f4f02;
 }
 
 pre {
 	border-top: solid #CCC 1px;
 	border-bottom: solid #CCC 1px;
-	background-color: white;
-	margin-bottom: 20px;
 }
 
 
 body {
-	font-family: 'Merriweather', serif;
-	font-weight: 300;
-	font-size: 11pt;
+	font-family: "Reddit Mono", monospace;
+	font-optical-sizing: auto;
+  	font-style: normal;
+	font-weight: 500;
+	font-size: 10pt;
 	line-height: 150%;
 }
+
+h1 { font-size: 16pt; }
+h2 { font-size: 15pt; }
+h3 { font-size: 14pt; }
+h4 { font-size: 13pt; }
+h5 { font-size: 12pt; }
+h6 { font-size: 11pt; }
 
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
-header {
-	font-family: 'Work Sans', sans-serif;
-	font-weight: 800;
+h6 {
+	font-weight: 900;
+	color: #000;
 }
 
 
 p {
 	margin-bottom: 16px;
-	font-size: 100%;
 	outline: 0;
 }
 
 blockquote {
-	border-left: solid black 5px;
-	background-color: #F9FFE8;
+	border-left: solid #333 5px;
 	padding-left: 5px;
-	font-size: 14px;
-	font-style: italic;
-	font-family: Georgia;
 	margin-bottom: 16px;
 }
 
 b {
 	font-variant: small-caps;
-}
-
-h1 {
-	font-size: 48px;
-	line-height: 50px;
-	font-weight: normal;
-}
-
-h2 {
-	font-size: 36px;
-	line-height: 40px;
-	font-variant: small-caps;
-}
-
-h3 {
-	font-size: 18px;
-	line-height: 20px;
-	text-transform: uppercase;
-	font-weight: normal;
-	font-variant: small-caps;
-}
-
-h4 {
-	font-size: 21px;
-	line-height: 25px;
-}
-
-h5 {
-	font-size: 18px;
-	line-height: 20px;
-}
-
-h6 {
-	font-size: 16px;
-	line-height: 18px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	margin-top: 5px;
 }
 
 ul {
@@ -123,13 +101,12 @@ ul {
 /* Color */
 
 a {
-	color: #000000;
-	background-color: #D9F1D9;
-	text-decoration: none;
+	color: #4596ff;
+	text-decoration: underline;
 }
 
 a:hover {
-	color: #333333;
+	color: #ff456a;
 }
 
 .footnote {
@@ -140,6 +117,7 @@ a:hover {
 
 ul {
 	list-style-position: inside;
+	list-style-type: square;
 }
 
 .wrap {
@@ -150,7 +128,6 @@ ul {
 
 header {
 	width: 100%;
-	background-color: #12140F;
 	margin-bottom: 20px;
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -158,15 +135,8 @@ header {
 }
 
 header a {
-	color: white;
 	text-decoration: none;
 	font-weight: normal;
-	background-color: #12140F;
-}
-
-header a:hover {
-	background-color: #12140F;
-	color: #CCCCCC;
 }
 
 .author {
@@ -178,6 +148,8 @@ header a:hover {
 .author h1 {
 	float: left;
 	text-align: left;
+	margin-top: 15px;
+	font-size: 20pt;
 }
 
 .author h1 a {
@@ -212,92 +184,53 @@ header a:hover {
 	width: auto;
 }
 
-.author .links li a:hover {
-	background-color: #333333;
-}
 
 footer {
 	display: block;
+	width: 100%;
+
 	padding: 5px;
 	padding-top: 10px;
-	width: 50%;
+	padding-bottom: 10px;
+
 	margin: auto;
 	margin-top: 20px;
+	margin-bottom: 0px;
+
 	clear: both;
 	text-align: center;
-	background-color: #8FA193;
-	color: #12140F;
+	color: #050505;
+	background-color: #EEE;	
 }
 
-
-.entry-title {
+article {
 	margin-top: 30px;
-	margin-left: 10%;
+	margin-bottom: 30px;
+	clear: both;
+	padding-bottom: 10px;
+}
+
+.blog_posts li {
+	list-style: none;
+}
+
+.blog_posts .date {
+	color: #BBB;
+	display: inline;
+	width: 100px;
+	text-align: left;
 }
 
 .entry-title a {
 	text-decoration: none;
-	font-weight: normal;
-	font-size: 25px;
 	line-height: 30px;
-	color: black;
-	padding: 3px;
-	color: black;
-	background-color: white;
 }
 
-.entry-title a:hover {
-	color: black;
-	background-color: white;
-}
-
-.updated {
-	margin-top: 10px;
-}
-
-.date {
-	text-align: center;
-}
-
-.date .year,
-.date .month,
-.date .day {
-	display: block;
-	color: white;
-	font-weight: normal;
-	margin-bottom: 13px;
-}
-
-.date .year {
-	font-size: 12pt;
-	margin-bottom: 5px;
-}
-
-.date .month {
-	margin-top: 5px;
-	font-size: 17pt;
-}
-
-.date .day {
-	font-size: 26pt;
-	margin-bottom: 13px;
-}
-
-
-.details {
-	float: left;
-	margin-left: 3%;
-	margin-right: 2%;
-	width: 50px;
-	margin-top: 5px;
-	background-color: black;
-	text-align: right;
-}
 
 .text {
 	margin-top: 10px;
 	float: left;
-	width: 82%;
+	max-width: 80%;
 	text-align: justify;
 }
 
@@ -305,40 +238,22 @@ footer {
 	max-width: 640px;
 }
 
-.text a {
-	background-color: #D6E5F1;
+
+.metadata {
+	float: left;
+	display: block;
+	margin: 10px;
+	border-left: dashed 1px #CCC;
+	padding-left: 20px;
+	margin-left: 20px;
+	min-width: 15%;
+	color: #999;
 }
 
-.subpages h5 {
-	padding-top: 15px;
-	padding-bottom: 5px;
-	<<<<<<< HEAD: public/media/css/alcides-bliki.css font-variant: small-caps;
-	font-weight: normal;
-	=======text-transform: uppercase;
-	font-weight: normal;
-	>>>>>>>17ae9e97d7209af9095c5fddb60341ce56919df1: wiki/static/css/alcides-bliki.css
-}
-
-.subpages,
-.comments,
-.ads {
-	clear: both;
-	margin-left: 10%;
-	margin-bottom: 20px;
-}
-
-.subpages li a {
-	background-color: #FFFD89;
-	color: black;
-}
-
-.subpages li a:hover {
-	background-color: #FFFD89;
-	color: black;
-}
 
 .subpages li {
-	list-style: none;
+	list-style: square;
+	list-style-position: inside;
 	margin-top: 3px;
 	margin-bottom: 3px;
 }
@@ -359,13 +274,8 @@ footer {
 	float: right;
 }
 
-.pagination a,
-.comments a {
+.pagination a {
 	display: block inline;
 	padding: 3px;
-	border: solid #333333 1px;
-}
-
-.pages_list .ads {
-	background-color: #EBEBEB;
+	border: solid #4596ff 1px;
 }

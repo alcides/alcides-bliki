@@ -7,9 +7,7 @@
 
 .clear {
 	clear: both;
-}
-
-a.hidden {
+.hidden {
 	display: none;
 }
 
@@ -220,13 +218,14 @@ footer {
 	display: block;
 	padding: 5px;
 	padding-top: 10px;
+	padding-bottom:20px;
 	width: 50%;
 	margin: auto;
 	margin-top: 20px;
 	clear: both;
 	text-align: center;
-	background-color: #8FA193;
-	color: #12140F;
+	color: #050505;
+	background-color: #EEE;
 }
 
 
@@ -284,14 +283,14 @@ footer {
 }
 
 
-.details {
+
+.metadata {
 	float: left;
-	margin-left: 3%;
-	margin-right: 2%;
-	width: 50px;
-	margin-top: 5px;
-	background-color: black;
-	text-align: right;
+	display: block;
+	margin: 10px;
+}
+
+.details {
 }
 
 .text {
@@ -312,14 +311,20 @@ footer {
 .subpages h5 {
 	padding-top: 15px;
 	padding-bottom: 5px;
-	<<<<<<< HEAD: public/media/css/alcides-bliki.css font-variant: small-caps;
+	font-variant: small-caps;
 	font-weight: normal;
-	=======text-transform: uppercase;
+	text-transform: uppercase;
 	font-weight: normal;
-	>>>>>>>17ae9e97d7209af9095c5fddb60341ce56919df1: wiki/static/css/alcides-bliki.css
 }
 
-.subpages,
+
+
+
+.subpages {
+	float:left;
+}
+
+
 .comments,
 .ads {
 	clear: both;

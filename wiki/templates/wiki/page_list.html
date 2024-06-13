@@ -6,9 +6,7 @@
 {% block content %}
 <div class="pages_list">
 	{% for object in object_list %}
-	<div class="page">
 		{% include "wiki/page.html" %}
-	</div>
 	{% endfor %}
 </div>
 
@@ -21,7 +19,8 @@
 		{% if page_obj.has_next %}
 		<a href="?page={{ page_obj.next_page_number }}" class="next">next</a>
 		{% endif %}
-	</span><br />
+	</span>
+
 </div>
 
 {% endblock %}
