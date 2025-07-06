@@ -3,6 +3,7 @@
 * {
 	padding: 0;
 	margin: 0;
+	box-sizing: border-box;
 }
 
 .clear {
@@ -15,12 +16,19 @@
 
 html {
 	height: 100%;
+	word-wrap: break-word;
+	line-break: after-white-space;
+	font-kerning: normal;
+	text-rendering: optimizeLegibility;
+	line-height: 1.5;
+	-webkit-nbsp-mode: space;
 }
 
 body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100%;
+	background-color: hsl(0, 0%, 29%);
 }
 
 .wrap {
@@ -132,6 +140,7 @@ header {
 	padding-top: 5px;
 	padding-bottom: 5px;
 	display: block;
+	background-color: white;
 }
 
 header a {
@@ -204,11 +213,26 @@ footer {
 }
 
 article {
+	flex: 1 0 auto;
+	font-size: 110%;
 	margin-top: 30px;
 	margin-bottom: 30px;
+	min-width: 560px;
 	clear: both;
-	padding-bottom: 10px;
+	padding: 15px;
+	background-color: white;
 }
+
+article.hentry img:not(.icon) {
+	max-width: 100%;
+	width: auto;
+	margin: 0 0 1rem;
+	display: block;
+	/*margin-left: auto;
+	margin-right: auto;*/
+	height: auto;
+}
+
 
 .blog_posts li {
 	list-style: none;
@@ -230,7 +254,6 @@ article {
 .text {
 	margin-top: 10px;
 	float: left;
-	max-width: 80%;
 	text-align: justify;
 }
 
@@ -240,13 +263,13 @@ article {
 
 
 .metadata {
+	clear: both;
 	float: left;
 	display: block;
-	margin: 10px;
 	border-left: dashed 1px #CCC;
-	padding-left: 20px;
-	margin-left: 20px;
-	min-width: 15%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
 	color: #999;
 }
 
