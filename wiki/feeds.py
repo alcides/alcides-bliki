@@ -35,7 +35,7 @@ class English(WikiFeed):
 
     def items(self):
         en = Language.objects.get(code="en")
-        return Page.objects.filter(lang=en).exclude(pubdate=None).exclude(pubdate__gt=datetime.date.today()).order_by('-pubdate')[:NUMBER_OF_ITEMS]
+        return Page.objects.filter(lang=en).exclude(pubdate=None).exclude(pubdate__gt=datetime.datetime.now()).order_by('-pubdate')[:NUMBER_OF_ITEMS]
 
         
 class Portuguese(WikiFeed):
@@ -43,11 +43,11 @@ class Portuguese(WikiFeed):
 
     def items(self):
         pt = Language.objects.get(code="pt")
-        return Page.objects.filter(lang=pt).exclude(pubdate=None).exclude(pubdate__gt=datetime.date.today()).order_by('-pubdate')[:NUMBER_OF_ITEMS]
+        return Page.objects.filter(lang=pt).exclude(pubdate=None).exclude(pubdate__gt=datetime.datetime.now()).order_by('-pubdate')[:NUMBER_OF_ITEMS]
 
         
 class All(WikiFeed):
     title = "Alcides Fonseca"
 
     def items(self):
-        return Page.objects.exclude(pubdate=None).exclude(pubdate__gt=datetime.date.today()).order_by('-pubdate')[:NUMBER_OF_ITEMS]
+        return Page.objects.exclude(pubdate=None).exclude(pubdate__gt=datetime.datetime.now()).order_by('-pubdate')[:NUMBER_OF_ITEMS]

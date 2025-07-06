@@ -28,6 +28,6 @@ urlpatterns = [
     path('feeds/all/', All()),
 	path('feeds/pt/', Portuguese()),
 	path('feeds/en/', English()),
-    path('', ListView.as_view(queryset= Page.objects.filter(pubdate__isnull=False).exclude(pubdate__gt=datetime.date.today()).order_by('-pubdate'), paginate_by=20 )),
+    path('', ListView.as_view(queryset= Page.objects.filter(pubdate__isnull=False).exclude(pubdate__gt=datetime.datetime.now()).order_by('-pubdate'), paginate_by=20 )),
     re_path('^(?!(admin|media|static))(?P<slug>[\w/\-_]*)/$', DetailView.as_view(queryset=Page.objects.all()), name="page_detail"),
 ]
