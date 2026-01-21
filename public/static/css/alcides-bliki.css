@@ -1,40 +1,104 @@
 /* Reset */
-
 * {
-	padding: 0;
 	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+img.icon,
+svg.icon,
+.icon img,
+.icon svg {
+	background-color: transparent;
 }
 
 .clear {
 	clear: both;
+}
+
 .hidden {
 	display: none;
 }
 
+:root {
+	--bg: #f7f4ef;
+	--surface: #ffffff;
+	--ink: #1b1b1b;
+	--muted: #6b6b6b;
+	--accent: #f5988f;
+	--accent-ink: #a14c45;
+	--border: #eadfd6;
+	--shadow: 0 16px 36px rgba(27, 27, 27, 0.08);
+	--radius: 18px;
+}
+
+html {
+	height: 100%;
+	word-wrap: break-word;
+	line-break: after-white-space;
+	font-kerning: normal;
+	text-rendering: optimizeLegibility;
+	line-height: 1.6;
+	background: var(--bg);
+	color: var(--ink);
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	background: linear-gradient(180deg, #f7f4ef 0%, #fff5f3 60%, #f7f4ef 100%);
+	font-family: "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+	font-weight: 400;
+	font-size: 1rem;
+	line-height: 1.7;
+}
+
+.wrap {
+	flex: 1;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 0 1.5rem 2.5rem;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
 /* Typography */
-
-@import url('https://fonts.googleapis.com/css?family=Merriweather:300|Work+Sans:700,800');
-
 
 code,
 pre {
-	margin: 0;
-	padding: 0;
+	font-family: "Reddit Mono", "SFMono-Regular", Menlo, monospace;
+	font-size: 0.95rem;
+	color: #3b3b3b;
+}
+
+code {
+	background: #fff7f6;
+	padding: 0.12rem 0.35rem;
+	border-radius: 6px;
 }
 
 pre {
-	border-top: solid #CCC 1px;
-	border-bottom: solid #CCC 1px;
-	background-color: white;
-	margin-bottom: 20px;
+	background: #fff8f7;
+	border: 1px solid var(--border);
+	border-radius: 14px;
+	padding: 1rem 1.25rem;
+	overflow-x: auto;
+	margin: 1rem 0;
 }
 
-
-body {
-	font-family: 'Merriweather', serif;
-	font-weight: 300;
-	font-size: 11pt;
-	line-height: 150%;
+pre code {
+	background: transparent;
+	padding: 0;
 }
 
 h1,
@@ -42,335 +106,303 @@ h2,
 h3,
 h4,
 h5,
-h6,
-header {
-	font-family: 'Work Sans', sans-serif;
-	font-weight: 800;
+h6 {
+	font-family: "Merriweather", Georgia, serif;
+	font-weight: 700;
+	color: var(--ink);
+	margin: 0.6rem 0 0.8rem;
 }
 
+h1 { font-size: clamp(1.75rem, 3vw, 2.4rem); }
+h2 { font-size: clamp(1.5rem, 2.4vw, 2rem); }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.1rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.95rem; }
 
 p {
-	margin-bottom: 16px;
-	font-size: 100%;
+	margin-bottom: 1rem;
 	outline: 0;
 }
 
 blockquote {
-	border-left: solid black 5px;
-	background-color: #F9FFE8;
-	padding-left: 5px;
-	font-size: 14px;
+	border-left: 4px solid var(--accent);
+	background: #fff0ee;
+	padding: 0.75rem 1rem;
+	border-radius: 12px;
+	margin: 0 0 1rem;
+	color: #5a3b4d;
 	font-style: italic;
-	font-family: Georgia;
-	margin-bottom: 16px;
 }
 
 b {
-	font-variant: small-caps;
+	font-weight: 700;
 }
 
-h1 {
-	font-size: 48px;
-	line-height: 50px;
-	font-weight: normal;
-}
-
-h2 {
-	font-size: 36px;
-	line-height: 40px;
-	font-variant: small-caps;
-}
-
-h3 {
-	font-size: 18px;
-	line-height: 20px;
-	text-transform: uppercase;
-	font-weight: normal;
-	font-variant: small-caps;
-}
-
-h4 {
-	font-size: 21px;
-	line-height: 25px;
-}
-
-h5 {
-	font-size: 18px;
-	line-height: 20px;
-}
-
-h6 {
-	font-size: 16px;
-	line-height: 18px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	margin-top: 5px;
-}
-
-ul {
-	margin: 5px;
-	margin-bottom: 10px;
+ul,
+ol {
+	margin: 0.5rem 0 1rem 1.2rem;
 }
 
 /* Color */
 
 a {
-	color: #000000;
-	background-color: #D9F1D9;
+	color: var(--accent-ink);
 	text-decoration: none;
+	border-bottom: 1px solid rgba(125, 36, 86, 0.25);
+	transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
 a:hover {
-	color: #333333;
+	color: var(--accent);
+	border-bottom-color: var(--accent);
+}
+
+a:focus-visible {
+	outline: 2px solid rgba(245, 152, 143, 0.4);
+	outline-offset: 3px;
+	border-bottom-color: transparent;
 }
 
 .footnote {
-	font-size: 8pt;
+	font-size: 0.85rem;
+	color: var(--muted);
 }
 
 /* Layout */
 
-ul {
-	list-style-position: inside;
-}
-
-.wrap {
-	max-width: 90%;
-	min-width: 150px;
-	margin: auto;
-}
-
 header {
 	width: 100%;
-	background-color: #12140F;
-	margin-bottom: 20px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	display: block;
+	background: var(--surface);
+	border-bottom: 1px solid var(--border);
 }
 
 header a {
-	color: white;
 	text-decoration: none;
-	font-weight: normal;
-	background-color: #12140F;
-}
-
-header a:hover {
-	background-color: #12140F;
-	color: #CCCCCC;
+	font-weight: 600;
 }
 
 .author {
-	margin: auto;
-	margin-left: 10%;
-	text-align: left;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
 }
 
 .author h1 {
-	float: left;
-	text-align: left;
+	margin: 0;
+	font-size: clamp(1.6rem, 2.4vw, 2.2rem);
 }
 
 .author h1 a {
-	display: block;
-	padding-top: 15px;
+	color: var(--ink);
+	border-bottom: none;
 }
 
 .author img.photo {
-	float: left;
-	margin: 5px;
-	margin-right: 3%;
-	border-radius: 150px;
-	-webkit-border-radius: 150px;
-	-moz-border-radius: 150px;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	box-shadow: 0 10px 22px rgba(27, 27, 27, 0.12);
 }
 
 .author .links {
-	float: right;
-	margin-top: 25px;
-	margin-right: 30px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 .author .links li {
 	list-style: none;
-	float: right;
 }
 
 .author .links li a {
-	display: block;
-	padding: 3px;
-	margin: 5pt;
-	width: auto;
+	display: inline-flex;
+	align-items: center;
+	padding: 0.35rem 0.75rem;
+	border-radius: 999px;
+	border: 1px solid var(--border);
+	background: #fff5f3;
+	color: var(--ink);
+	font-size: 0.9rem;
+	border-bottom: none;
 }
 
 .author .links li a:hover {
-	background-color: #333333;
+	background: var(--accent);
+	border-color: var(--accent);
+	color: #ffffff;
 }
 
 footer {
-	display: block;
-	padding: 5px;
-	padding-top: 10px;
-	padding-bottom:20px;
-	width: 50%;
-	margin: auto;
-	margin-top: 20px;
-	clear: both;
+	width: 100%;
+	padding: 1.5rem;
+	margin-top: 2rem;
 	text-align: center;
-	color: #050505;
-	background-color: #EEE;
+	color: var(--muted);
+	background: var(--surface);
+	border-top: 1px solid var(--border);
 }
 
+footer .ml-embedded {
+	margin: 1.25rem auto 0;
+	max-width: 420px;
+}
 
-.entry-title {
-	margin-top: 30px;
-	margin-left: 10%;
+article {
+	flex: 1 0 auto;
+	font-size: 1.05rem;
+	margin: 1.75rem 0;
+	padding: 2rem;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+}
+
+article ul,
+article ol {
+	padding-left: 1rem;
+}
+
+article.hentry img:not(.icon) {
+	max-width: 100%;
+	width: auto;
+	margin: 0 0 1rem;
+	display: block;
+	height: auto;
+	border-radius: 12px;
+	box-shadow: 0 8px 20px rgba(27, 27, 27, 0.1);
+}
+
+.blog_posts li {
+	list-style: none;
+	padding: 0.75rem 0;
+	border-bottom: 1px dashed var(--border);
+}
+
+.blog_posts .date {
+	color: var(--muted);
+	display: inline;
+	width: 100px;
+	text-align: left;
+	font-size: 0.9rem;
 }
 
 .entry-title a {
 	text-decoration: none;
-	font-weight: normal;
-	font-size: 25px;
-	line-height: 30px;
-	color: black;
-	padding: 3px;
-	color: black;
-	background-color: white;
+	line-height: 1.4;
+	color: var(--ink);
+	border-bottom: none;
 }
 
 .entry-title a:hover {
-	color: black;
-	background-color: white;
-}
-
-.updated {
-	margin-top: 10px;
-}
-
-.date {
-	text-align: center;
-}
-
-.date .year,
-.date .month,
-.date .day {
-	display: block;
-	color: white;
-	font-weight: normal;
-	margin-bottom: 13px;
-}
-
-.date .year {
-	font-size: 12pt;
-	margin-bottom: 5px;
-}
-
-.date .month {
-	margin-top: 5px;
-	font-size: 17pt;
-}
-
-.date .day {
-	font-size: 26pt;
-	margin-bottom: 13px;
-}
-
-
-
-.metadata {
-	float: left;
-	display: block;
-	margin: 10px;
-}
-
-.details {
+	color: var(--accent);
 }
 
 .text {
-	margin-top: 10px;
-	float: left;
-	width: 82%;
-	text-align: justify;
+	margin-top: 1rem;
+	text-align: left;
+}
+
+.text h2,
+.text h3,
+.text h4 {
+	margin-top: 1.5rem;
+}
+
+.text ul,
+.text ol {
+	margin: 0.75rem 0 1.25rem 1.5rem;
+	padding-left: 0.5rem;
+}
+
+.text li {
+	margin-bottom: 0.4rem;
 }
 
 .text img {
-	max-width: 640px;
+	max-width: 100%;
 }
 
-.text a {
-	background-color: #D6E5F1;
-}
-
-.subpages h5 {
-	padding-top: 15px;
-	padding-bottom: 5px;
-	font-variant: small-caps;
-	font-weight: normal;
-	text-transform: uppercase;
-	font-weight: normal;
-}
-
-
-
-
-.subpages {
-	float:left;
-}
-
-
-.comments,
-.ads {
-	clear: both;
-	margin-left: 10%;
-	margin-bottom: 20px;
-}
-
-.subpages li a {
-	background-color: #FFFD89;
-	color: black;
-}
-
-.subpages li a:hover {
-	background-color: #FFFD89;
-	color: black;
+.metadata {
+	margin-top: 1.25rem;
+	padding-left: 1rem;
+	border-left: 2px dashed var(--border);
+	color: var(--muted);
+	font-size: 0.9rem;
 }
 
 .subpages li {
-	list-style: none;
-	margin-top: 3px;
-	margin-bottom: 3px;
+	list-style: disc;
+	list-style-position: inside;
+	margin: 0.25rem 0;
 }
 
 .pagination {
 	width: 100%;
-	margin: auto;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	padding-top: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+	margin: 1.5rem 0;
 }
 
-.pagination .previous {
-	float: left;
+.pagination a {
+	display: inline-flex;
+	padding: 0.35rem 0.75rem;
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	background: var(--surface);
+	border-bottom: none;
 }
 
-.pagination .next {
-	float: right;
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 1rem 0;
+	font-size: 0.95rem;
 }
 
-.pagination a,
-.comments a {
-	display: block inline;
-	padding: 3px;
-	border: solid #333333 1px;
+th,
+td {
+	text-align: left;
+	padding: 0.65rem 0.75rem;
+	border-bottom: 1px solid var(--border);
 }
 
-.pages_list .ads {
-	background-color: #EBEBEB;
+@media (max-width: 820px) {
+	.author {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.author h1 {
+		margin-top: 0;
+	}
+
+	.author .links {
+		width: 100%;
+	}
+}
+
+@media (max-width: 600px) {
+	.wrap {
+		padding: 0 1rem 2rem;
+	}
+
+	.author {
+		padding: 1.25rem 1rem;
+	}
+
+	article {
+		padding: 1.25rem;
+		border-radius: 14px;
+	}
 }
