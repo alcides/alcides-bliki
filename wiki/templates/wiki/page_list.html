@@ -1,9 +1,19 @@
 {% extends "base.html" %}
 
-{% block pagetitle %}Latest Pages{% endblock %}
-{% block title %}Latest Pages{% endblock %}
+{% block pagetitle %}{% if tag %}Posts tagged with: {{ tag.name }}{% else %}Latest Pages{% endif %}{% endblock %}
+{% block title %}{% if tag %}Posts tagged with: {{ tag.name }}{% else %}Latest Pages{% endif %}{% endblock %}
 
 {% block content %}
+{% if top_tags %}
+<div class="top_tags">
+	<p>Top tags:
+	{% for tag in top_tags %}
+		<a href="{% url 'tag_page_list' tag.slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+	{% endfor %}
+	</p>
+</div>
+{% endif %}
+
 <div class="pages_list">
 	{% for object in object_list %}
 		{% include "wiki/page.html" %}
