@@ -344,7 +344,6 @@ article.hentry img:not(.icon) {
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 0.35rem;
-	margin-top: 0.5rem;
 }
 
 .subpages li {
