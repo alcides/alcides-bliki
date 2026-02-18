@@ -46,6 +46,12 @@
 		</div>
 		{% endif %}
 
+		{% if request.user.is_authenticated and request.user == object.author %}
+		<div class="edit-link">
+			<a href="{% url 'admin:wiki_page_change' object.pk %}">Edit page</a>
+		</div>
+		{% endif %}
+
 		<div class="subpages">
 
 
