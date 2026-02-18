@@ -37,6 +37,14 @@
 			Language: {{object.lang}}
 		</div>
 
+		{% if object.tags.exists %}
+		<div class="tags">
+			Tags:
+			{% for tag in object.tags.all %}
+				<a href="{% url 'tag_page_list' tag.slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+			{% endfor %}
+		</div>
+		{% endif %}
 
 		<div class="subpages">
 

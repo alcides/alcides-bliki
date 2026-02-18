@@ -339,10 +339,55 @@ article.hentry img:not(.icon) {
 	font-size: 0.9rem;
 }
 
+.metadata .tags {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.35rem;
+	margin-top: 0.5rem;
+}
+
 .subpages li {
 	list-style: disc;
 	list-style-position: inside;
 	margin: 0.25rem 0;
+}
+
+.tag-page-title {
+	text-align: center;
+	font-size: 1.25rem;
+}
+
+.top_tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin-top: 1.5rem;
+	margin-bottom: 0;
+}
+
+.top_tags .tag,
+.metadata .tags a.tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
+	padding: 0.35rem 0.75rem;
+	border-radius: 999px;
+	border: 1px solid var(--border);
+	background: #fff5f3;
+	color: var(--ink);
+	font-size: 0.9rem;
+	text-decoration: none;
+	border-bottom: none;
+	box-shadow: none;
+}
+
+.top_tags .tag:hover,
+.metadata .tags a.tag:hover {
+	background: var(--accent);
+	border-color: var(--accent);
+	color: #ffffff;
 }
 
 .pagination {

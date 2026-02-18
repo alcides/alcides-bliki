@@ -6,12 +6,14 @@
 {% block content %}
 {% if top_tags %}
 <div class="top_tags">
-	<p>Top tags:
 	{% for tag in top_tags %}
-		<a href="{% url 'tag_page_list' tag.slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+		<a href="{% url 'tag_page_list' tag.slug %}" class="tag">{{ tag.name }}</a>
 	{% endfor %}
-	</p>
 </div>
+{% endif %}
+
+{% if tag %}
+<h2 class="tag-page-title">Posts tagged as {{ tag.name }}</h2>
 {% endif %}
 
 <div class="pages_list">
