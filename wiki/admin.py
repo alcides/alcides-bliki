@@ -14,10 +14,17 @@ class PageAdmin(admin.ModelAdmin):
 	prepopulated_fields = {"slug": ("title",)}
 	search_fields = ['slug','title','text']
 	list_filter = ('lang','pubdate', 'date', 'author')
-	list_display = ('title','slug','is_published','date','lang')
+	list_display = ('title','slug','is_published','date','lang','get_tags_display')
 	list_display_links = ('title', 'slug')
 	autocomplete_fields = ['tags']
-	
+
+	def get_queryset(self, request):
+		return super().get_queryset(request).prefetch_related('tags')
+
+	@admin.display(description='Tags')
+	def get_tags_display(self, obj):
+		return ", ".join(t.name for t in obj.tags.all())
+
 	fieldsets = (
 	        ('Content', {
 	            'fields': ('title', 'text')
