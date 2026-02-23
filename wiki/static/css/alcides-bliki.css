@@ -64,6 +64,11 @@ body {
 	max-width: 960px;
 	margin: 0 auto;
 	padding: 0 1.5rem 2.5rem;
+	width: 100%;
+}
+
+iframe {
+	width: 100%;
 }
 
 section {
