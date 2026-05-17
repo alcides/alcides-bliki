@@ -21,10 +21,8 @@ class WikiFeed(Feed):
         return "%s" % obj.text
         
     def item_author_name(self, obj):
-        return "%s" % obj.author.username
-        
-    def item_author_email(self,obj):
-        return "%s" % obj.author.email
+        full_name = obj.author.get_full_name()
+        return full_name or obj.author.username
 
     def item_pubdate(self, obj):
         return obj.pubdate
