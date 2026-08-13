@@ -7,4 +7,3 @@ fixtures
 .DS_Store
 public/admin-media
 public/static/.venv
-.venv
