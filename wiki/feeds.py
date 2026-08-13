@@ -10,9 +10,10 @@ class WikiFeed(Feed):
     description = "A Maelstrom of Ideas, Code and Politics"
     title_template = 'feeds/title.html'
     description_template = 'feeds/description.html'
+    utm_source = "rss"
 
     def item_link(self, obj):
-        return "/%s" % obj.slug
+        return "/%s?utm_source=%s" % (obj.slug, self.utm_source)
         
     def item_title(self, obj):
         return "%s" % obj.title
@@ -30,6 +31,7 @@ class WikiFeed(Feed):
 
 class English(WikiFeed):
     title = "Alcides Fonseca (english feed)"
+    utm_source = "rss_en"
 
     def items(self):
         en = Language.objects.get(code="en")
@@ -38,6 +40,7 @@ class English(WikiFeed):
         
 class Portuguese(WikiFeed):
     title = "Alcides Fonseca (feed em Portugues)"
+    utm_source = "rss_pt"
 
     def items(self):
         pt = Language.objects.get(code="pt")
@@ -46,6 +49,7 @@ class Portuguese(WikiFeed):
         
 class All(WikiFeed):
     title = "Alcides Fonseca"
+    utm_source = "rss_all"
 
     def items(self):
         return Page.objects.exclude(pubdate=None).exclude(pubdate__gt=datetime.datetime.now()).order_by('-pubdate')[:NUMBER_OF_ITEMS]
