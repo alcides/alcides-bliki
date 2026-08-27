@@ -1,0 +1,173 @@
+.markdown-preview-widget {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.markdown-preview-editor,
+.markdown-preview-pane {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.markdown-preview-widget textarea.vLargeTextField {
+  width: 100% !important;
+  min-height: 28em;
+  box-sizing: border-box;
+  font-family: var(--font-family-monospace, ui-monospace, Menlo, Consolas, monospace);
+  font-size: 13px;
+  line-height: 1.45;
+  resize: vertical;
+}
+
+.markdown-preview-label {
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--body-quiet-color, #666);
+  margin-bottom: 0.4rem;
+}
+
+.markdown-preview-output {
+  flex: 1 1 auto;
+  min-height: 28em;
+  max-height: 70vh;
+  overflow: auto;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color, #ccc);
+  background: var(--body-bg, #fff);
+  color: var(--body-fg, #333);
+  border-radius: 4px;
+  line-height: 1.55;
+  word-wrap: break-word;
+}
+
+.markdown-preview-output > :first-child {
+  margin-top: 0;
+}
+
+.markdown-preview-output > :last-child {
+  margin-bottom: 0;
+}
+
+.markdown-preview-output h1,
+.markdown-preview-output h2,
+.markdown-preview-output h3,
+.markdown-preview-output h4,
+.markdown-preview-output h5,
+.markdown-preview-output h6 {
+  margin: 1em 0 0.4em;
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--body-loud-color, #000);
+}
+
+.markdown-preview-output h1 { font-size: 1.6em; }
+.markdown-preview-output h2 { font-size: 1.35em; }
+.markdown-preview-output h3 { font-size: 1.2em; }
+
+.markdown-preview-output p,
+.markdown-preview-output ul,
+.markdown-preview-output ol,
+.markdown-preview-output blockquote,
+.markdown-preview-output pre,
+.markdown-preview-output table {
+  margin: 0 0 0.85em;
+}
+
+.markdown-preview-output ul,
+.markdown-preview-output ol {
+  padding-left: 1.5em;
+}
+
+.markdown-preview-output li {
+  margin: 0.2em 0;
+}
+
+.markdown-preview-output blockquote {
+  padding: 0.2em 0.8em;
+  border-left: 3px solid var(--hairline-color, #e8e8e8);
+  color: var(--body-quiet-color, #666);
+}
+
+.markdown-preview-output pre,
+.markdown-preview-output code {
+  font-family: var(--font-family-monospace, ui-monospace, Menlo, Consolas, monospace);
+  font-size: 0.92em;
+}
+
+.markdown-preview-output code {
+  background: var(--darkened-bg, #f8f8f8);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+.markdown-preview-output pre {
+  background: var(--darkened-bg, #f8f8f8);
+  padding: 0.75em 1em;
+  overflow: auto;
+  border-radius: 4px;
+}
+
+.markdown-preview-output pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-preview-output img {
+  max-width: 100%;
+  height: auto;
+}
+
+.markdown-preview-output table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.markdown-preview-output th,
+.markdown-preview-output td {
+  border: 1px solid var(--hairline-color, #e8e8e8);
+  padding: 0.35em 0.6em;
+  text-align: left;
+}
+
+.markdown-preview-output iframe,
+.markdown-preview-output object,
+.markdown-preview-output embed,
+.markdown-preview-output video {
+  max-width: 100%;
+}
+
+.markdown-preview-output .footnote {
+  margin-top: 1.5em;
+  padding-top: 0.75em;
+  border-top: 1px solid var(--hairline-color, #e8e8e8);
+  font-size: 0.9em;
+}
+
+.markdown-preview-output .footnote-ref,
+.markdown-preview-output sup {
+  font-size: 0.75em;
+}
+
+.form-row .markdown-preview-widget {
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 1024px) {
+  .markdown-preview-widget {
+    flex-direction: column;
+  }
+
+  .markdown-preview-widget textarea.vLargeTextField,
+  .markdown-preview-output {
+    min-height: 18em;
+    max-height: none;
+  }
+}

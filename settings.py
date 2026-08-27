@@ -102,3 +102,17 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# django-markup: pass extras to python-markdown. Bleach tags/attrs are
+# hardcoded in the stock filter, so replace markdown with a subclass that
+# keeps footnote class/rel. See wiki.markdown_filter.
+from wiki.markdown_filter import WikiMarkdownMarkupFilter
+
+MARKUP_FILTER = {
+    "markdown": WikiMarkdownMarkupFilter,
+}
+MARKUP_SETTINGS = {
+    "markdown": {
+        "extensions": ["footnotes", "fenced_code"],
+    },
+}
