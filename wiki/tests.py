@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 from django.contrib.admin.sites import AdminSite
 
 from django_markup.templatetags.markup_tags import apply_markup
-from wiki.admin import PageAdmin
+from wiki.admin import PageAdmin, bookmarklet_markdown
 from wiki.models import *
 from wiki.widgets import AdminMarkdownPreviewWidget
 
@@ -445,3 +445,62 @@ class AdminMarkdownPreviewTestCase(TestCase):
     self.assertIn("wiki/admin/markdown_preview.js", content)
     self.assertIn("wiki/admin/markdown_preview.css", content)
     self.assertIn("Existing body", content)
+
+
+
+class QuoteBookmarkletTestCase(TestCase):
+
+  def setUp(self):
+    self.user = User.objects.create_superuser(
+      "bmadmin", "bmadmin@example.com", "test123"
+    )
+    Language.objects.create(name="English", code="en")
+    self.client.force_login(self.user)
+
+  def test_markdown_quotes_selection_and_links_title_and_author(self):
+    md = bookmarklet_markdown(
+      "Pitfalls of Benchmarking on Modern Systems",
+      "https://stefan-marr.de/post/",
+      "What could it be?",
+      "Stefan Marr",
+      "https://stefan-marr.de",
+    )
+    self.assertIn("> What could it be?", md)
+    self.assertIn(
+      "— [Pitfalls of Benchmarking on Modern Systems](https://stefan-marr.de/post/) by [Stefan Marr](https://stefan-marr.de)",
+      md,
+    )
+
+  def test_add_form_prefills_from_query(self):
+    url = reverse("admin:wiki_page_add")
+    response = self.client.get(url, {
+      "title": "A Source Article",
+      "url": "https://example.com/article",
+      "quote": "Selected excerpt here.",
+      "source_author": "Jane Doe",
+      "source_author_url": "https://example.com/jane",
+    })
+    self.assertEqual(response.status_code, 200)
+    content = response.content.decode()
+    self.assertIn("A Source Article", content)
+    self.assertIn("Selected excerpt here.", content)
+    self.assertIn("[A Source Article](https://example.com/article)", content)
+    self.assertIn("[Jane Doe](https://example.com/jane)", content)
+    self.assertIn("blog/a-source-article", content)
+    self.assertIn("bookmarklet_prefill.js", content)
+
+  def test_installer_page_has_javascript_bookmarklet(self):
+    url = reverse("admin:wiki_page_quote_bookmarklet")
+    response = self.client.get(url)
+    self.assertEqual(response.status_code, 200)
+    content = response.content.decode()
+    self.assertIn("javascript:", content)
+    self.assertIn("Quote to wiki", content)
+    self.assertIn("getSelection", content)
+    add_url = reverse("admin:wiki_page_add")
+    self.assertIn(add_url, content)
+
+  def test_anonymous_installer_is_rejected(self):
+    client = Client()
+    response = client.get(reverse("admin:wiki_page_quote_bookmarklet"))
+    self.assertIn(response.status_code, (302, 403))

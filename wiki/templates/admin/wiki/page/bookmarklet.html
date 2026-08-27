@@ -1,0 +1,21 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block title %}Quote bookmarklet{% endblock %}
+
+{% block content %}
+<h1>Quote bookmarklet</h1>
+<p>
+  Drag this link to your bookmarks bar. On any article, select the excerpt,
+  then click the bookmark. It opens a new blog post with the quote, linked
+  title, and author filled in.
+</p>
+<p style="font-size:1.2em;margin:1.5em 0;">
+  <a href="{{ bookmarklet }}">Quote to wiki</a>
+</p>
+<p class="help">
+  You need to be logged into admin. The post is not saved until you hit Save.
+  Publish date is set to now, author is the first user, slug is
+  <code>blog/…</code> from the page title.
+</p>
+{% endblock %}
