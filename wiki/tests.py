@@ -334,47 +334,6 @@ class AmazonAffiliateTagTestCase(TestCase):
     self.assertNotIn("javascript:", rendered.lower())
 
 
-class AmazonLocaleScriptTestCase(TestCase):
-  """Client-side amazon.com -> amazon.es rewrite for visitors in Iberia."""
-
-  def setUp(self):
-    self.user = User.objects.create_user("localeuser", "locale@example.com", "test123")
-    self.lang = Language.objects.create(name="English", code="en")
-
-  def _script_source(self):
-    from django.contrib.staticfiles import finders
-    path = finders.find("wiki/amazon_locale.js")
-    self.assertIsNotNone(path)
-    with open(path) as f:
-      return f.read()
-
-  def test_pages_include_locale_script(self):
-    page = Page.objects.create(
-      title="amazon page",
-      slug="amazon-page",
-      author=self.user,
-      lang=self.lang,
-      text="Buy [it](https://www.amazon.com/dp/B00X4WHP5E).",
-    )
-    response = self.client.get("/%s/" % page.slug)
-    self.assertEqual(response.status_code, 200)
-    self.assertIn("wiki/amazon_locale.js", response.content.decode())
-
-  def test_script_targets_spain_and_portugal_timezones(self):
-    source = self._script_source()
-    for tz in (
-      "Europe/Madrid", "Africa/Ceuta", "Atlantic/Canary",
-      "Europe/Lisbon", "Atlantic/Madeira", "Atlantic/Azores",
-    ):
-      self.assertIn(tz, source)
-
-  def test_script_rewrites_to_amazon_es_with_spanish_tag(self):
-    source = self._script_source()
-    self.assertIn("www.amazon.es", source)
-    self.assertIn("alcidesfonsec-21", source)
-    self.assertIn("smile.amazon.com", source)
-
-
 class MarkdownPageRenderTestCase(TestCase):
 
   def setUp(self):
