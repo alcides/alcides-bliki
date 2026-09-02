@@ -221,6 +221,160 @@ class MarkdownMarkupTestCase(TestCase):
     self.assertNotIn("<ol>", rendered)
 
 
+class AmazonAffiliateTagTestCase(TestCase):
+  """Rendered Amazon shopping links get the locale's Associates tracking ID."""
+
+  def render(self, text):
+    return str(apply_markup(text, "markdown"))
+
+  def test_markdown_link_to_amazon_com_gets_us_tag(self):
+    rendered = self.render(
+      "Buy [the book](https://www.amazon.com/dp/B00X4WHP5E) today."
+    )
+    self.assertIn(
+      'href="https://www.amazon.com/dp/B00X4WHP5E?tag=alcidesfonsec-20"',
+      rendered,
+    )
+
+  def test_markdown_link_to_amazon_es_gets_spain_tag(self):
+    rendered = self.render(
+      "Compra [el libro](https://www.amazon.es/dp/B00X4WHP5E) hoy."
+    )
+    self.assertIn(
+      'href="https://www.amazon.es/dp/B00X4WHP5E?tag=alcidesfonsec-21"',
+      rendered,
+    )
+
+  def test_raw_html_anchor_gets_tag(self):
+    rendered = self.render(
+      '<a href="http://amazon.com/gp/product/0596529260">Beautiful Code</a>'
+    )
+    self.assertIn(
+      'href="http://amazon.com/gp/product/0596529260?tag=alcidesfonsec-20"',
+      rendered,
+    )
+
+  def test_existing_tag_is_replaced(self):
+    rendered = self.render(
+      "[old](https://www.amazon.com/dp/B00X4WHP5E?tag=alcidfonse-20)"
+    )
+    self.assertIn("tag=alcidesfonsec-20", rendered)
+    self.assertNotIn("alcidfonse-20", rendered)
+
+    rendered_es = self.render(
+      "[old](https://www.amazon.es/dp/B00X4WHP5E/?tag=somethingelse-21)"
+    )
+    self.assertIn("tag=alcidesfonsec-21", rendered_es)
+    self.assertNotIn("somethingelse-21", rendered_es)
+
+  def test_other_query_params_and_fragment_are_preserved(self):
+    rendered = self.render(
+      "[search](https://www.amazon.com/s?k=django&ref=nb_sb_noss&tag=old-20#reviews)"
+    )
+    self.assertIn("k=django", rendered)
+    self.assertIn("ref=nb_sb_noss", rendered)
+    self.assertIn("#reviews", rendered)
+    self.assertIn("tag=alcidesfonsec-20", rendered)
+    self.assertNotIn("old-20", rendered)
+
+  def test_smile_subdomain_gets_us_tag(self):
+    rendered = self.render("[smile](https://smile.amazon.com/dp/B00X4WHP5E)")
+    self.assertIn("tag=alcidesfonsec-20", rendered)
+
+  def test_locales_without_a_tracking_id_are_untouched(self):
+    for url in (
+      "https://www.amazon.de/dp/B00X4WHP5E",
+      "https://www.amazon.co.uk/dp/B00X4WHP5E",
+    ):
+      rendered = self.render("[intl](%s)" % url)
+      self.assertIn('href="%s"' % url, rendered)
+      self.assertNotIn("tag=", rendered)
+
+  def test_non_shopping_amazon_hosts_are_untouched(self):
+    for url in (
+      "https://aws.amazon.com/s3/",
+      "https://s3.amazonaws.com/bucket/key",
+      "https://developer.amazon.com/alexa",
+      "https://music.amazon.com/albums/B01",
+      "https://www.amazon.jobs/en/",
+    ):
+      rendered = self.render("[link](%s)" % url)
+      self.assertIn('href="%s"' % url, rendered)
+      self.assertNotIn("tag=alcidesfonsec", rendered)
+
+  def test_short_links_are_untouched(self):
+    # amzn.to/a.co are opaque redirects; a tag appended to the short URL is
+    # discarded when Amazon expands it, so they are deliberately left alone.
+    rendered = self.render("[short](https://amzn.to/3abcDEF)")
+    self.assertIn('href="https://amzn.to/3abcDEF"', rendered)
+    self.assertNotIn("tag=", rendered)
+
+  def test_iframe_src_on_shopping_host_gets_tag(self):
+    rendered = self.render(
+      '<iframe src="https://www.amazon.com/widget?x=1" width="100" height="100"></iframe>'
+    )
+    self.assertIn("tag=alcidesfonsec-20", rendered)
+    self.assertIn("x=1", rendered)
+
+  def test_dead_astore_iframe_is_untouched(self):
+    # aStores were retired in 2017; astore.amazon.com is not www/smile/bare
+    # so the old embeds keep their original (dead) URL.
+    rendered = self.render(
+      '<iframe src="http://astore.amazon.com/alcidfonse-20" width="100%" height="4000"></iframe>'
+    )
+    self.assertIn('src="http://astore.amazon.com/alcidfonse-20"', rendered)
+    self.assertNotIn("alcidesfonsec", rendered)
+
+  def test_non_amazon_links_are_untouched(self):
+    rendered = self.render("[plain](https://example.com/shop?tag=keepme)")
+    self.assertIn('href="https://example.com/shop?tag=keepme"', rendered)
+
+  def test_javascript_urls_are_still_stripped(self):
+    rendered = self.render('<a href="javascript:alert(1)">x</a>')
+    self.assertNotIn("javascript:", rendered.lower())
+
+
+class AmazonLocaleScriptTestCase(TestCase):
+  """Client-side amazon.com -> amazon.es rewrite for visitors in Iberia."""
+
+  def setUp(self):
+    self.user = User.objects.create_user("localeuser", "locale@example.com", "test123")
+    self.lang = Language.objects.create(name="English", code="en")
+
+  def _script_source(self):
+    from django.contrib.staticfiles import finders
+    path = finders.find("wiki/amazon_locale.js")
+    self.assertIsNotNone(path)
+    with open(path) as f:
+      return f.read()
+
+  def test_pages_include_locale_script(self):
+    page = Page.objects.create(
+      title="amazon page",
+      slug="amazon-page",
+      author=self.user,
+      lang=self.lang,
+      text="Buy [it](https://www.amazon.com/dp/B00X4WHP5E).",
+    )
+    response = self.client.get("/%s/" % page.slug)
+    self.assertEqual(response.status_code, 200)
+    self.assertIn("wiki/amazon_locale.js", response.content.decode())
+
+  def test_script_targets_spain_and_portugal_timezones(self):
+    source = self._script_source()
+    for tz in (
+      "Europe/Madrid", "Africa/Ceuta", "Atlantic/Canary",
+      "Europe/Lisbon", "Atlantic/Madeira", "Atlantic/Azores",
+    ):
+      self.assertIn(tz, source)
+
+  def test_script_rewrites_to_amazon_es_with_spanish_tag(self):
+    source = self._script_source()
+    self.assertIn("www.amazon.es", source)
+    self.assertIn("alcidesfonsec-21", source)
+    self.assertIn("smile.amazon.com", source)
+
+
 class MarkdownPageRenderTestCase(TestCase):
 
   def setUp(self):
