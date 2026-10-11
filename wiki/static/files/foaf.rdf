@@ -63,7 +63,6 @@
 				<dc:title>Alcides Fonseca</dc:title>
 
 				<dc:description xml:lang="en">Maelstrom of Ideas, Code and Politics</dc:description>
-				<rdfs:seeAlso rdf:resource="http://feeds.feedburner.com/alcides" />
 				<rdfs:seeAlso rdf:resource="http://alcides.ideias3.com/apml.py" />
 				<foaf:maker rdf:resource="#alcides"/>
 			</foaf:Document>

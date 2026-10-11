@@ -1,4 +1,5 @@
 import os
+from django.core.management.utils import get_random_secret_key
 
 
 def relative(*x):
@@ -21,7 +22,7 @@ DATABASES = {
     }
 }
 
-SECRET_KEY = 'ABC12344'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') or get_random_secret_key()
 
 try:
     from local_settings import *
@@ -67,7 +68,9 @@ TEMPLATES = [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
-                "django.contrib.messages.context_processors.messages",
+				"django.contrib.messages.context_processors.messages",
+				"wiki.context_processors.blogroll",
+				"wiki.context_processors.current_activity",
             ]
         },
     },

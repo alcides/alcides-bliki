@@ -1,4 +1,4 @@
-{% load static %}
+{% load static markup_tags %}
 <!DOCTYPE HTML>
 <html>
 
@@ -43,11 +43,10 @@
 			<h1><a class="url fn uid" rel="me" href="/">Alcides Fonseca</a></h1>
 
 			<ul class="links">
-				<li><a href="/about/" rel="me">About</a></li>
-				<li><a href="/research/team/">Team</a></li>
-				<li><a href="/research/service/" rel="me">Service</a></li>
-				<li><a href="/research/projects/" rel="me">Projects</a></li>
-				<li><a href="/teaching/" rel="me">Teaching</a></li>
+			<li><a href="/about/" rel="me">About</a></li>
+			<li><a href="/research/team/">Team</a></li>
+			<li><a href="/research/" rel="me">Research</a></li>
+			<li><a href="/teaching/" rel="me">Teaching</a></li>
 				<li><a href="/" rel="me">Blog</a></li>
 			</ul>
 			<div style="display:none">
@@ -68,6 +67,44 @@
 	</div>
 	 <footer>
 		Do you want to be updated when I post new content? You can subscribe to <a href="/feeds/all/">my RSS feed</a> or <a href="https://dashboard.mailerlite.com/forms/985884/124069941101987603/share" target="_blank">via email</a>.
+
+		{% if blogroll_page or lastfm_tracks or bgg_plays %}
+		<div class="footer-columns">
+			{% if blogroll_page %}
+			<section class="blogroll" aria-labelledby="blogroll-title">
+				<h2 id="blogroll-title">Those I Read &amp; Follow</h2>
+				<div class="blogroll-content">
+					{% autoescape off %}
+					{{ blogroll_page.text|apply_markup:"markdown" }}
+					{% endautoescape %}
+				</div>
+			</section>
+			{% endif %}
+
+			{% if lastfm_tracks %}
+			<section class="recent-activity" aria-labelledby="listening-title">
+				<h2 id="listening-title">What I am listening to</h2>
+				<ol>
+					{% for track in lastfm_tracks %}
+					<li>{% if track.now_playing %}<span class="activity-status">Now playing</span>{% endif %}<span class="activity-icon" aria-hidden="true">♪</span><a href="{{ track.url }}">{{ track.name }}</a>{% if track.artist %}<span> — {{ track.artist }}</span>{% endif %}</li>
+					{% endfor %}
+				</ol>
+			</section>
+			{% endif %}
+
+			{% if bgg_plays %}
+			<section class="recent-activity" aria-labelledby="playing-title">
+				<h2 id="playing-title">What I am playing</h2>
+				<ol>
+					{% for play in bgg_plays %}
+					<li><span class="activity-icon" aria-hidden="true">⚄</span><a href="{{ play.url }}">{{ play.name }}</a>{% if play.rating %} <span>({{ play.rating }})</span>{% endif %}</li>
+					{% endfor %}
+				</ol>
+				<a class="bgg-attribution" href="https://boardgamegeek.com/" title="Powered by BoardGameGeek"><img src="https://cf.geekdo-images.com/HZy35cmzmmyV9BarSuk6ug__small/img/gbE7sulIurZE_Tx8EQJXnZSKI6w=/fit-in/200x150/filters:strip_icc()/pic7779581.png" alt="Powered by BGG" /></a>
+			</section>
+			{% endif %}
+		</div>
+		{% endif %}
 
 	</footer>
 	<script defer src="https://cloud.umami.is/script.js" data-website-id="18b07b17-18ba-4745-b8ce-25f2d029f10b"></script>

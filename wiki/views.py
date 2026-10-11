@@ -2,6 +2,7 @@ import datetime
 from django.utils import timezone
 from django.db.models import Count
 from django.shortcuts import get_object_or_404
+from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
 from .models import Page, Tag
@@ -51,3 +52,21 @@ class TagPageListView(ListView):
         context = super().get_context_data(**kwargs)
         context['tag'] = get_object_or_404(Tag, slug=self.kwargs['slug'])
         return context
+
+
+class PageDetailView(DetailView):
+	queryset = Page.objects.all().prefetch_related('tags')
+
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		page_url = f'/{self.object.slug}/'
+
+		if '/blog' in page_url and self.object.tags.exists():
+			context['suggested_posts'] = (
+				_published_pages()
+				.filter(tags__in=self.object.tags.all())
+				.exclude(pk=self.object.pk)
+				.distinct()[:5]
+			)
+
+		return context

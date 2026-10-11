@@ -1,4 +1,5 @@
 import string
+from datetime import timedelta
 from random import choice
 import unittest
 
@@ -504,3 +505,64 @@ class QuoteBookmarkletTestCase(TestCase):
     client = Client()
     response = client.get(reverse("admin:wiki_page_quote_bookmarklet"))
     self.assertIn(response.status_code, (302, 403))
+
+
+class BlogRecommendationsTests(TestCase):
+  def setUp(self):
+    self.user = User.objects.create_user("author", "author@example.com", "test123")
+    self.language = Language.objects.create(name="English", code="en")
+    self.tag = Tag.objects.create(name="Technology", slug="technology")
+    self.current = self.create_page("Current post", "blog/current", 10)
+    self.current.tags.add(self.tag)
+
+  def create_page(self, title, slug, days_ago):
+    return Page.objects.create(
+      title=title,
+      slug=slug,
+      author=self.user,
+      lang=self.language,
+      text="Post body",
+      pubdate=timezone.now() - timedelta(days=days_ago),
+    )
+
+  def test_shows_five_newest_published_posts_with_a_shared_tag(self):
+    posts = []
+    for index in range(6):
+      post = self.create_page(f"Suggested {index}", f"blog/suggested-{index}", index)
+      post.tags.add(self.tag)
+      posts.append(post)
+
+    response = self.client.get("/blog/current/")
+
+    self.assertContains(response, "Read next")
+    for post in posts[:5]:
+      self.assertContains(response, post.title)
+    self.assertNotContains(response, posts[5].title)
+
+  def test_does_not_show_recommendations_on_non_blog_pages(self):
+    page = self.create_page("About", "about", 0)
+    page.tags.add(self.tag)
+
+    response = self.client.get("/about/")
+
+    self.assertNotContains(response, "Read next")
+
+
+class BlogrollTests(TestCase):
+  def setUp(self):
+    self.user = User.objects.create_user("author", "author@example.com", "test123")
+    self.language = Language.objects.create(name="English", code="en")
+
+  def test_renders_the_blogroll_page_in_the_footer(self):
+    Page.objects.create(
+      title="Blogroll",
+      slug="blogroll",
+      author=self.user,
+      lang=self.language,
+      text="[Example blog](https://example.com/)",
+    )
+
+    response = self.client.get("/")
+
+    self.assertContains(response, "Those I Read &amp; Follow")
+    self.assertContains(response, 'href="https://example.com/"')

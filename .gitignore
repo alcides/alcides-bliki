@@ -8,3 +8,6 @@ fixtures
 public/admin-media
 public/static/.venv
 .venv
+.env
+.env.*
+*.bak-*

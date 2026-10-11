@@ -5,7 +5,7 @@
 {% load markup_tags %}
 
 <article class="hentry">
-	<h3 class="entry-title"><a href="/{{object.slug}}">{{object.title}}</a></h3>
+	<h1 class="entry-title"><a href="/{{object.slug}}">{{object.title}}</a></h1>
 
 
 
@@ -67,3 +67,14 @@
 	</div>
 	<div class="clear"></div>
 </article>
+
+{% if suggested_posts %}
+<section class="suggested-posts" aria-labelledby="suggested-posts-title">
+	<h3 id="suggested-posts-title">Read next</h3>
+	<ul>
+		{% for post in suggested_posts %}
+		<li><a href="{% url 'page_detail' post.slug %}">{{ post.title }}</a></li>
+		{% endfor %}
+	</ul>
+</section>
+{% endif %}
