@@ -5,3 +5,4 @@ django-markup
 markdown
 bleach
 Pillow
+python-dotenv

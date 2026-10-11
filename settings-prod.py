@@ -4,15 +4,8 @@ from settings import *
 
 
 def load_secret_environment(path):
-	"""Load deployment-only API credentials without committing them."""
-	try:
-		with open(path, encoding="utf-8") as secret_file:
-			for line in secret_file:
-				key, separator, value = line.strip().partition("=")
-				if key and separator:
-					os.environ.setdefault(key, value)
-	except FileNotFoundError:
-		pass
+	"""Load deployment-only credentials, preserving existing environment values."""
+	load_dotenv(path, override=False)
 
 
 load_secret_environment("/home/alcides/.config/wiki_alcidesfonseca_com/lastfm.env")

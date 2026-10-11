@@ -1,9 +1,12 @@
 import os
 from django.core.management.utils import get_random_secret_key
+from dotenv import load_dotenv
 
 
 def relative(*x):
     return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
+
+load_dotenv(relative('.env'), override=False)
 
 DEBUG = True
 ALLOWED_HOSTS = []

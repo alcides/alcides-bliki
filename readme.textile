@@ -6,7 +6,28 @@ This is the code that powers http://wiki.alcidesfonseca.com
 
 It is a django app being served by apache with passenger running in slicehost. you might want to change the settings and the public/media folder, so it follows django's standards.
 
-There are a few dependencies, so you should run @pip install -r requirements.txt@ before starting up.
+h2. Local setup
+
+Install dependencies with @pip install -r requirements.pip@, or use the @uv run --with-requirements requirements.pip@ prefix for the commands below.
+
+Create a @.env@ file in the project root:
+
+<pre>
+DJANGO_SECRET_KEY=replace-with-a-random-secret
+# Optional: enable recent listening and board game activity in the footer.
+LASTFM_API_KEY=
+BGG_API_TOKEN=
+</pre>
+
+Generate a secret with @python -c "import secrets; print(secrets.token_urlsafe(64))"@ and use the result as @DJANGO_SECRET_KEY@. Keep this value stable between restarts and use a separate key for each environment. The @.env@ file is ignored by Git; never commit real credentials.
+
+Settings automatically load @.env@ from the project root. Existing process environment variables take precedence. The API keys are optional: leaving them empty disables the corresponding activity section. Local development without a key generates a temporary key; a configured key avoids invalidating sessions on restart.
+
+Create the database directory with @mkdir -p db@, then run @python manage.py migrate@. Before starting the server, run @python manage.py collectstatic --no-input@, then @python manage.py runserver@.
+
+h2. Production configuration
+
+Production (@DJANGO_SETTINGS_MODULE=settings-prod@) requires @DJANGO_SECRET_KEY@ in the environment or the project @.env@. It also loads the legacy secrets file @/home/alcides/.config/wiki_alcidesfonseca_com/lastfm.env@ without overriding values already provided by the environment or @.env@. That file can contain the same variables shown above. Restrict access to secrets files with @chmod 600 .env@.
 
 Feedback appreciated to me@alcidesfonseca.com
 
