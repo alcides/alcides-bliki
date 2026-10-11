@@ -649,3 +649,25 @@ td {
 :root[data-theme="dark"] :is(.entry-content,.blogroll-content) img[src$="/industry.png"] { content: url("../icons/industry-dark.svg"); filter: none !important; }
 :is(.entry-content,.blogroll-content) img:is([src$="/code.png"],[src*="/simple-icons@"],[src*="/simple-icons/"]) { content: url("../icons/code-light.svg"); filter: none !important; }
 :root[data-theme="dark"] :is(.entry-content,.blogroll-content) img:is([src$="/code.png"],[src*="/simple-icons@"],[src*="/simple-icons/"]) { content: url("../icons/code-dark.svg"); filter: none !important; }
+
+/* Consistent service icons and readable legacy publication lists. */
+:is(.entry-content,.blogroll-content) img[src$="/service.png"] { content: url("../icons/service-light.svg"); filter: none !important; }
+:root[data-theme="dark"] :is(.entry-content,.blogroll-content) img[src$="/service.png"] { content: url("../icons/service-dark.svg"); filter: none !important; }
+article .entry-content ul.elements {
+  font-size: .85rem;
+  line-height: 1.65;
+  list-style: none;
+  padding: 0;
+  margin: .75rem 0;
+}
+article .entry-content ul.elements li {
+  padding-left: 24px;
+  text-indent: -24px;
+  margin: .55rem 0;
+}
+article .entry-content ul.elements li img {
+  margin-right: 8px !important;
+  text-indent: 0;
+}
+
+:is(.entry-content,.blogroll-content) img.theme-icon { filter: none !important; }

@@ -22,6 +22,15 @@
     });
     paragraph.replaceWith(list);
   });
+  const themedIcons = [];
+  document.querySelectorAll('.entry-content img, .blogroll-content img').forEach(img => {
+    const filename = new URL(img.src, location.href).pathname.split('/').pop();
+    let name = filename?.replace(/\.(png|svg)$/, '');
+    if (img.src.includes('/simple-icons')) name = 'code';
+    if (!['talk','paper','industry','code','service'].includes(name)) return;
+    img.classList.add('icon', 'theme-icon');
+    themedIcons.push({img, name});
+  });
   const root = document.documentElement;
   const themeButton = document.querySelector('.theme-toggle');
   const systemTheme = matchMedia('(prefers-color-scheme: dark)');
@@ -29,6 +38,7 @@
   try { explicitTheme = ['light', 'dark'].includes(localStorage.getItem('research-theme')); } catch (_) {}
   function updateTheme(theme) {
     root.dataset.theme = theme;
+    themedIcons.forEach(({img,name}) => { img.src = '/static/icons/' + name + '-' + theme + '.svg'; });
     const label = theme === 'dark' ? 'Light mode' : 'Dark mode';
     themeButton.textContent = label;
     themeButton.setAttribute('aria-label', 'Switch to ' + label.toLowerCase());
