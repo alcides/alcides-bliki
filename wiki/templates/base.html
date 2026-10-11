@@ -6,6 +6,15 @@
 	<meta charset="UTF-8" />
 	<title>{% block title %}Homepage{% endblock %} by Alcides Fonseca</title>
 
+	<script>
+		try {
+			const savedTheme = localStorage.getItem('research-theme');
+			const theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+			document.documentElement.dataset.theme = theme;
+		} catch (_) {
+			document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+		}
+	</script>
 	<!-- Style -->
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="icon" href="/favicon.ico" />
@@ -14,6 +23,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Reddit+Mono:wght@400;500&family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="{% static 'css/alcides-bliki.css' %}" />
 	<link rel="stylesheet" href="{% static 'css/syntax.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/research.css' %}" />
 
         <!-- Feeds -->
         <link rel="alternate" type="application/rss+xml" title="Alcides Fonseca (pt+en)"
@@ -37,18 +47,20 @@
 </head>
 
 <body>
+	<a class="skip-link" href="#main-content">Skip to content</a>
 	<header>
 		<div class="agent vcard author" id="hCard">
 			<img class="photo" src="/static/images/alcides_small.jpg" alt="" />
-			<h1><a class="url fn uid" rel="me" href="/">Alcides Fonseca</a></h1>
+			<div class="identity"><a class="url fn uid" rel="me" href="/">Alcides Fonseca<span class="identity-dot">.</span></a><span class="identity-role">AI &amp; Programming Languages researcher</span></div>
 
-			<ul class="links">
+			<nav aria-label="Main navigation"><ul class="links">
 			<li><a href="/about/" rel="me">About</a></li>
-			<li><a href="/research/team/">Team</a></li>
+			<li><a href="/startups/">Startups</a></li>
 			<li><a href="/research/" rel="me">Research</a></li>
 			<li><a href="/teaching/" rel="me">Teaching</a></li>
 				<li><a href="/" rel="me">Blog</a></li>
-			</ul>
+			</ul></nav>
+			<button class="theme-toggle" type="button" aria-label="Switch to dark mode" hidden>Dark mode</button>
 			<div style="display:none">
 				<time class="bday" datetime="1988-11-24T01:55:00Z">Nov 24, 1988</time>
 				<span class="geo">
@@ -60,7 +72,16 @@
 			<div class="clear"></div>
 		</div>
 	</header>
-	<div class="wrap">
+	<section class="research-intro {% if request.path != '/' %}research-intro-compact{% endif %}" aria-labelledby="research-heading">
+		<canvas id="research-particles" aria-hidden="true"></canvas>
+		<div class="intro-inner">
+			<h1 id="research-heading">Making intelligent software<br><span>more reliable.</span></h1>
+			<p class="intro-description">I work on the intersection of AI, Software Engineering and Programming Languages. Currently, I am applying Formal Methods to Agents, towards AI Safety.</p>
+			<div class="intro-links"><a href="/research/">Explore my research <span aria-hidden="true">↗</span></a><a href="mailto:me@alcidesfonseca.com">Get in touch <span aria-hidden="true">↗</span></a></div>
+			<div class="research-topics"><span>Program synthesis</span><span>Liquid types</span><span>Reliable AI</span></div>
+		</div>
+	</section>
+	<div class="wrap" id="main-content" tabindex="-1">
 		<section>
 			{% block content %}{% endblock %}
 		</section>
@@ -107,6 +128,7 @@
 		{% endif %}
 
 	</footer>
+	<script defer src="{% static 'js/research-particles.js' %}"></script>
 	<script defer src="https://cloud.umami.is/script.js" data-website-id="18b07b17-18ba-4745-b8ce-25f2d029f10b"></script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {

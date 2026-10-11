@@ -610,3 +610,32 @@ td {
 		border-radius: 14px;
 	}
 }
+
+/* Shared content icons, including older Markdown without icon classes.
+   A fixed box with contain preserves the artwork's original proportions.
+   Override legacy page-level dimensions and generic article-image styling. */
+:root { --content-icon-size: 16px; }
+:is(.entry-content,.blogroll-content) img:is(.icon,.icon2,[src$="/paper.png"],[src$="/talk.png"],[src$="/service.png"],[src$="/industry.png"],[src$="/experience.png"],[src$="/education.png"],[src$="/other.png"],[src*="/simple-icons@"],[src*="/simple-icons/"]) {
+	display: inline-block !important;
+	width: var(--content-icon-size) !important;
+	height: var(--content-icon-size) !important;
+	min-width: var(--content-icon-size);
+	max-width: var(--content-icon-size) !important;
+	max-height: var(--content-icon-size);
+	object-fit: contain !important;
+	object-position: center;
+	vertical-align: -0.15em;
+	margin: 0 0.45em 0 0 !important;
+	padding: 0 !important;
+	border: 0;
+	border-radius: 0 !important;
+	box-shadow: none !important;
+	background: transparent;
+	flex-shrink: 0;
+}
+:root[data-theme="dark"] :is(.entry-content,.blogroll-content) img:is(.icon,.icon2,[src$="/paper.png"],[src$="/talk.png"],[src$="/service.png"],[src$="/industry.png"],[src$="/experience.png"],[src$="/education.png"],[src$="/other.png"],[src*="/simple-icons@"],[src*="/simple-icons/"]) {
+	filter: invert(1);
+}
+.entry-content ul.publication-list > li > img {
+	margin-top: 7px !important;
+}
