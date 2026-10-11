@@ -23,3 +23,6 @@ body,header,footer,article{background:var(--surface);color:var(--ink)}body{backg
 .text p:has(>img[src$="/paper.png"],>img[src$="/talk.png"],>img[src$="/service.png"])>br{display:block;content:"";margin-top:14px}
 .text ul,.text ol{margin:1rem 0 1.5rem;padding-left:1.5rem;list-style-position:outside}.text ul{list-style-type:disc}.text ol{list-style-type:decimal}.text li{padding-left:.3rem;margin:.6rem 0}.text li::marker{color:var(--accent-ink)}.text li>ul,.text li>ol{margin:.4rem 0}.text ul ul{list-style-type:circle}.text ul.elements{list-style:none;padding-left:0;margin-left:0}.text ul.elements li{padding-left:0}
 .text ul.publication-list{list-style:none;margin:1rem 0 1.5rem;padding:0}.text ul.publication-list>li{display:grid;grid-template-columns:16px minmax(0,1fr);gap:12px;padding:0;margin:0 0 18px}.text ul.publication-list>li>img{margin-top:7px}.text ul.publication-list>li>span{min-width:0}
+
+/* The evolving portrait blends into the banner behind the text. */
+.intro-inner{position:relative;z-index:1}
