@@ -615,7 +615,7 @@ td {
    A fixed box with contain preserves the artwork's original proportions.
    Override legacy page-level dimensions and generic article-image styling. */
 :root { --content-icon-size: 16px; }
-:is(.entry-content,.blogroll-content) img:is(.icon,.icon2,[src$="/paper.png"],[src$="/talk.png"],[src$="/service.png"],[src$="/industry.png"],[src$="/experience.png"],[src$="/education.png"],[src$="/other.png"],[src*="/simple-icons@"],[src*="/simple-icons/"]) {
+:is(.entry-content,.blogroll-content) img:is(.icon,.icon2,[src$="/paper.png"],[src$="/code.png"],[src$="/talk.png"],[src$="/service.png"],[src$="/industry.png"],[src$="/experience.png"],[src$="/education.png"],[src$="/other.png"],[src*="/simple-icons@"],[src*="/simple-icons/"]) {
 	display: inline-block !important;
 	width: var(--content-icon-size) !important;
 	height: var(--content-icon-size) !important;
@@ -633,9 +633,19 @@ td {
 	background: transparent;
 	flex-shrink: 0;
 }
-:root[data-theme="dark"] :is(.entry-content,.blogroll-content) img:is(.icon,.icon2,[src$="/paper.png"],[src$="/talk.png"],[src$="/service.png"],[src$="/industry.png"],[src$="/experience.png"],[src$="/education.png"],[src$="/other.png"],[src*="/simple-icons@"],[src*="/simple-icons/"]) {
+:root[data-theme="dark"] :is(.entry-content,.blogroll-content) img:is(.icon,.icon2,[src$="/paper.png"],[src$="/code.png"],[src$="/talk.png"],[src$="/service.png"],[src$="/industry.png"],[src$="/experience.png"],[src$="/education.png"],[src$="/other.png"],[src*="/simple-icons@"],[src*="/simple-icons/"]) {
 	filter: invert(1);
 }
 .entry-content ul.publication-list > li > img {
 	margin-top: 7px !important;
 }
+
+/* Transparent vector alternatives for presentation, code, publication and industry. */
+:is(.entry-content,.blogroll-content) img[src$="/talk.png"] { content: url("../icons/talk-light.svg"); filter: none !important; }
+:root[data-theme="dark"] :is(.entry-content,.blogroll-content) img[src$="/talk.png"] { content: url("../icons/talk-dark.svg"); filter: none !important; }
+:is(.entry-content,.blogroll-content) img[src$="/paper.png"] { content: url("../icons/paper-light.svg"); filter: none !important; }
+:root[data-theme="dark"] :is(.entry-content,.blogroll-content) img[src$="/paper.png"] { content: url("../icons/paper-dark.svg"); filter: none !important; }
+:is(.entry-content,.blogroll-content) img[src$="/industry.png"] { content: url("../icons/industry-light.svg"); filter: none !important; }
+:root[data-theme="dark"] :is(.entry-content,.blogroll-content) img[src$="/industry.png"] { content: url("../icons/industry-dark.svg"); filter: none !important; }
+:is(.entry-content,.blogroll-content) img:is([src$="/code.png"],[src*="/simple-icons@"],[src*="/simple-icons/"]) { content: url("../icons/code-light.svg"); filter: none !important; }
+:root[data-theme="dark"] :is(.entry-content,.blogroll-content) img:is([src$="/code.png"],[src*="/simple-icons@"],[src*="/simple-icons/"]) { content: url("../icons/code-dark.svg"); filter: none !important; }
