@@ -554,6 +554,26 @@ table {
 	font-size: 0.95rem;
 }
 
+/* Keep wide CMS tables scrollable within the article at any screen size. */
+.entry-content {
+	min-width: 0;
+	max-width: 100%;
+}
+
+.entry-content table {
+	display: block;
+	max-width: 100%;
+	overflow-x: auto;
+}
+
+/* Legacy Projects content embeds a grid with a 500px minimum column. */
+.research-projects,
+.research-projects .projects {
+	display: block !important;
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+
 th,
 td {
 	text-align: left;

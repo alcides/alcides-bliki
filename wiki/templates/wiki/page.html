@@ -9,7 +9,7 @@
 
 
 
-	<div class="text entry-content" lang="{{object.lang.code}}">
+	<div class="text entry-content{% if object.slug == 'research/projects' %} research-projects{% endif %}" lang="{{object.lang.code}}">
 		{% autoescape off %}
 		{{object.text|apply_markup:"markdown"}}
 		{% endautoescape %}
