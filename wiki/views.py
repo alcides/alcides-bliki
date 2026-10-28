@@ -5,6 +5,9 @@ from django.shortcuts import get_object_or_404
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
+from django.utils.html import strip_tags
+
+from .metadata import preview_description
 from .models import Page, Tag
 
 
@@ -59,6 +62,9 @@ class PageDetailView(DetailView):
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
+		context['preview_title'] = ' '.join(strip_tags(self.object.title).split())
+		context['preview_description'] = preview_description(self.object.text)
+		context['canonical_url'] = self.request.build_absolute_uri(self.object.get_absolute_url())
 		page_url = f'/{self.object.slug}/'
 
 		if '/blog' in page_url and self.object.tags.exists():

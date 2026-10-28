@@ -1,7 +1,20 @@
 {% extends "base.html" %}
 
-{% block pagetitle %} {{ object.title }} {% endblock %}
-{% block title %} {{ object.title }} {% endblock %}
+{% block pagetitle %}{{ preview_title }}{% endblock %}
+{% block title %}{{ preview_title }}{% endblock %}
+
+{% block metadata %}
+<meta name="description" content="{{ preview_description }}" />
+<link rel="canonical" href="{{ canonical_url }}" />
+<meta property="og:title" content="{{ preview_title }}" />
+<meta property="og:description" content="{{ preview_description }}" />
+<meta property="og:url" content="{{ canonical_url }}" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Alcides Fonseca" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="{{ preview_title }}" />
+<meta name="twitter:description" content="{{ preview_description }}" />
+{% endblock %}
 
 {% block content %}
 {% include "wiki/page.html" %}
