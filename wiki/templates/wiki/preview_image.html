@@ -1,0 +1,9 @@
+{% if preview_image %}
+<meta property="og:image" content="{{ preview_image.url }}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="{{ preview_image.url }}" />
+{% if preview_image.alt %}
+<meta property="og:image:alt" content="{{ preview_image.alt }}" />
+<meta name="twitter:image:alt" content="{{ preview_image.alt }}" />
+{% endif %}
+{% endif %}

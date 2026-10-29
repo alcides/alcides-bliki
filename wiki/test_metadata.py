@@ -3,7 +3,7 @@ from html.parser import HTMLParser
 from django.contrib.auth.models import User
 from django.test import SimpleTestCase, TestCase
 
-from wiki.metadata import preview_description
+from wiki.metadata import preview_description, preview_image
 from wiki.models import Language, Page
 
 
@@ -33,6 +33,46 @@ class PreviewDescriptionTests(SimpleTestCase):
 
     def test_empty_content(self):
         self.assertEqual(preview_description(''), '')
+
+
+class PreviewImageTests(SimpleTestCase):
+    def test_uses_first_markdown_image(self):
+        self.assertEqual(
+            preview_image(
+                '![First diagram](/media/images/first.png)\n\n'
+                '![Second diagram](https://example.com/second.png)',
+                'https://example.com/blog/post/',
+            ),
+            {'url': 'https://example.com/media/images/first.png', 'alt': 'First diagram'},
+        )
+
+    def test_resolves_html_image_sources(self):
+        for source, expected in [
+            ('chart.png', 'https://example.com/blog/post/chart.png'),
+            ('../chart.png', 'https://example.com/blog/chart.png'),
+            ('//cdn.example.com/chart.png', 'https://cdn.example.com/chart.png'),
+            ('https://cdn.example.com/chart.png', 'https://cdn.example.com/chart.png'),
+            ('/media/a b.png?x=1&amp;y=2', 'https://example.com/media/a%20b.png?x=1&y=2'),
+        ]:
+            with self.subTest(source=source):
+                self.assertEqual(
+                    preview_image(f'<img src="{source}" alt="A &amp; B">', 'https://example.com/blog/post/'),
+                    {'url': expected, 'alt': 'A & B'},
+                )
+
+    def test_skips_empty_and_non_http_sources(self):
+        self.assertEqual(
+            preview_image(
+                '<img><img src=""><img src="javascript:alert(1)">'
+                '<img src="data:image/png;base64,abc"><img src="mailto:test@example.com">'
+                '<img src="/media/usable.png">',
+                'https://example.com/blog/post/',
+            ),
+            {'url': 'https://example.com/media/usable.png', 'alt': ''},
+        )
+
+    def test_returns_none_when_post_has_no_images(self):
+        self.assertIsNone(preview_image('A **text-only** post.', 'https://example.com/post/'))
 
 
 class _HeadMetadata(HTMLParser):
@@ -103,9 +143,13 @@ class PageMetadataTests(TestCase):
             'og:url': url,
             'og:type': 'article',
             'og:site_name': 'Alcides Fonseca',
-            'twitter:card': 'summary',
+            'twitter:card': 'summary_large_image',
             'twitter:title': self.page.title,
             'twitter:description': description,
+            'og:image': 'https://testserver/media/images/alcides_fonseca.jpg',
+            'twitter:image': 'https://testserver/media/images/alcides_fonseca.jpg',
+            'og:image:alt': 'Alcides Fonseca',
+            'twitter:image:alt': 'Alcides Fonseca',
         }.items():
             self.assertEqual(head.meta[key], [value])
         self.assertEqual(head.feed_count, 2)
@@ -122,9 +166,22 @@ class PageMetadataTests(TestCase):
         self.assertContains(response, 'content="A &quot;quote&quot; &amp; &lt;tag&gt;."')
 
     def test_index_does_not_get_article_metadata(self):
-        response = self.client.get('/')
+        response = self.client.get('/', secure=True)
         self.assertEqual(response.status_code, 200)
         head = _HeadMetadata(response.content.decode())
         self.assertNotIn('og:type', head.meta)
-        self.assertNotIn('twitter:card', head.meta)
+        self.assertEqual(head.meta['twitter:card'], ['summary_large_image'])
+        self.assertEqual(head.meta['og:image'], ['https://testserver/media/images/alcides_fonseca.jpg'])
+        self.assertEqual(head.meta['twitter:image'], head.meta['og:image'])
         self.assertEqual(head.canonical, [])
+
+    def test_post_image_replaces_fallback_and_escapes_attributes(self):
+        self.page.text = '![A "diagram" & example](/media/images/diagram.png?x=1&y=2)'
+        self.page.save()
+        response = self.client.get(self.page.get_absolute_url(), secure=True)
+        head = _HeadMetadata(response.content.decode())
+        self.assertEqual(head.meta['og:image'], ['https://testserver/media/images/diagram.png?x=1&y=2'])
+        self.assertEqual(head.meta['twitter:image'], head.meta['og:image'])
+        self.assertEqual(head.meta['og:image:alt'], ['A "diagram" & example'])
+        self.assertContains(response, 'content="A &quot;diagram&quot; &amp; example"')
+        self.assertNotIn('https://testserver/media/images/alcides_fonseca.jpg', head.meta['og:image'])

@@ -7,7 +7,7 @@ from django.views.generic.list import ListView
 
 from django.utils.html import strip_tags
 
-from .metadata import preview_description
+from .metadata import default_preview_image, preview_description, preview_image
 from .models import Page, Tag
 
 
@@ -31,6 +31,7 @@ class HomePageView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['preview_image'] = default_preview_image(self.request)
         now = timezone.now()
         context['top_tags'] = Tag.objects.filter(
             pages__pubdate__isnull=False,
@@ -65,6 +66,10 @@ class PageDetailView(DetailView):
 		context['preview_title'] = ' '.join(strip_tags(self.object.title).split())
 		context['preview_description'] = preview_description(self.object.text)
 		context['canonical_url'] = self.request.build_absolute_uri(self.object.get_absolute_url())
+		context['preview_image'] = (
+			preview_image(self.object.text, context['canonical_url'])
+			or default_preview_image(self.request)
+		)
 		page_url = f'/{self.object.slug}/'
 
 		if '/blog' in page_url and self.object.tags.exists():
